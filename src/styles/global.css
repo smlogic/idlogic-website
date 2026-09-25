@@ -239,17 +239,3 @@ button, a { -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: auto; }
   .hero-word-stack { animation: none; }
 }
-.hero-word-window {
-  height: 1.25em;
-  line-height: 1.25;
-  clip-path: inset(0);
-}
-
-.hero-word-stack {
-  height: 6.25em;
-}
-
-.hero-word-stack span {
-  height: 1.25em;
-  line-height: 1.25;
-}
