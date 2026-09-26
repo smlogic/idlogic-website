@@ -19,15 +19,24 @@ const currentYear = new Date().getFullYear();
     >
       <Header lang={lang} nav={t.nav} />
       <div class="shell hero-inner">
-        <a class="announcement" href={`${base}${lang === 'en' ? 'en/' : ''}smart-home/`}>
-          <img class="announcement-image" src={`${base}smart-home/scene-cleaning.webp`} alt="" width="1573" height="884" decoding="async" />
-          <span class="announcement-copy">
-            <span class="announcement-eyebrow">{t.announcement.eyebrow}</span>
-            <strong class="announcement-title">{t.announcement.title}</strong>
-            <span class="announcement-detail">{t.announcement.detail}</span>
-          </span>
-          <span class="announcement-arrow" aria-hidden="true">↗</span>
-        </a>
+        <div class="announcement-row">
+          <a class="announcement" href={`${base}${lang === 'en' ? 'en/' : ''}smart-home/`}>
+            <img class="announcement-image" src={`${base}smart-home/scene-cleaning.webp`} alt="" width="1573" height="884" decoding="async" />
+            <span class="announcement-copy">
+              <span class="announcement-eyebrow">{t.announcement.eyebrow}</span>
+              <strong class="announcement-title">{t.announcement.title}</strong>
+              <span class="announcement-detail">{t.announcement.detail}</span>
+            </span>
+            <span class="announcement-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="announcement announcement-placeholder">
+            <span class="announcement-image announcement-image-empty" aria-hidden="true"></span>
+            <span class="announcement-copy">
+              <span class="announcement-eyebrow">{t.officePreview.status}</span>
+              <strong class="announcement-title">Smart office</strong>
+            </span>
+          </div>
+        </div>
 
         <div class="hero-grid">
           <div class="hero-side">

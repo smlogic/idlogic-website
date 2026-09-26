@@ -18,6 +18,7 @@ export const copy = {
       title: 'Smart home od środka',
       detail: 'Interfejs i sceny na przykładzie jednego domu'
     },
+    officePreview: { status: 'W przygotowaniu' },
     hero: {
       eyebrow: 'Smart home · Smart office · Warszawa',
       first: 'Twój',
@@ -98,6 +99,7 @@ export const copy = {
       title: 'Inside a smart home',
       detail: 'Interface and scenes from one sample home'
     },
+    officePreview: { status: 'Coming soon' },
     hero: {
       eyebrow: 'Smart home · Smart office · Warsaw',
       first: 'Your',
