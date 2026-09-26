@@ -14,8 +14,9 @@ export const copy = {
       survey: 'Wyceń projekt'
     },
     announcement: {
-      lead: 'Chcesz poznać koszt swojego systemu?',
-      action: 'Wypełnij krótki formularz'
+      eyebrow: 'Zobacz w praktyce',
+      title: 'Smart home od środka',
+      detail: 'Interfejs i sceny na przykładzie jednego domu'
     },
     hero: {
       eyebrow: 'Smart home · Smart office · Warszawa',
@@ -93,8 +94,9 @@ export const copy = {
       survey: 'Estimate your project'
     },
     announcement: {
-      lead: 'Want to understand the cost of your system?',
-      action: 'Complete the short questionnaire'
+      eyebrow: 'See it in action',
+      title: 'Inside a smart home',
+      detail: 'Interface and scenes from one sample home'
     },
     hero: {
       eyebrow: 'Smart home · Smart office · Warsaw',
