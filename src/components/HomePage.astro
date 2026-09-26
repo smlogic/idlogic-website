@@ -90,9 +90,14 @@ const currentYear = new Date().getFullYear();
         <h2>{t.process.title}</h2>
       </div>
       <div class="shell steps">
-        {t.process.steps.map(([number, title, text]) => (
+        {t.process.steps.map(([title, text], index) => (
           <article class="step">
-            <span class="step-number">{number}</span>
+            <span class="step-icon" aria-hidden="true">
+              {index === 0 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 4.5V3h8v1.5M8 10h8M8 14h8M8 18h5"/></svg>}
+              {index === 1 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6m-5 3h4m-5-6c-1.7-1.2-2.5-2.8-2.5-4.7a5.5 5.5 0 0 1 11 0c0 1.9-.8 3.5-2.5 4.7V18H9z"/><path d="M12 2v1"/></svg>}
+              {index === 2 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V6l7-3 7 3v15M9 9h6M9 13h6M10 21v-4h4v4"/></svg>}
+              {index === 3 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18 9 12l4 4 8-9M16 7h5v5"/></svg>}
+            </span>
             <h3>{title}</h3>
             <p>{text}</p>
           </article>

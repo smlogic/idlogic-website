@@ -56,10 +56,10 @@ export const copy = {
       kicker: 'Od pomysłu do działającego systemu',
       title: 'Prosty proces, bez zgadywania.',
       steps: [
-        ['1', 'Krótki formularz', 'Opisujesz przestrzeń, potrzeby i zakres. Na tej podstawie zaczynamy wycenę.'],
-        ['2', 'Koncepcja', 'Porządkujemy funkcje, integracje i priorytety. Ustalamy, co naprawdę ma sens.'],
-        ['3', 'Projekt i wdrożenie', 'Konfigurujemy system, sceny i automatyzacje oraz przygotowujemy go do codziennego użycia.'],
-        ['4', 'Rozwój', 'System może rosnąć razem z przestrzenią — o kolejne pomieszczenia, urządzenia i scenariusze.']
+        ['Krótki formularz', 'Opisujesz przestrzeń, potrzeby i zakres. Na tej podstawie zaczynamy wycenę.'],
+        ['Koncepcja', 'Porządkujemy funkcje, integracje i priorytety. Ustalamy, co naprawdę ma sens.'],
+        ['Projekt i wdrożenie', 'Konfigurujemy system, sceny i automatyzacje oraz przygotowujemy go do codziennego użycia.'],
+        ['Rozwój', 'System może rosnąć razem z przestrzenią — o kolejne pomieszczenia, urządzenia i scenariusze.']
       ]
     },
     local: {
@@ -135,10 +135,10 @@ export const copy = {
       kicker: 'From idea to a working system',
       title: 'A clear process, without guesswork.',
       steps: [
-        ['1', 'Short questionnaire', 'Tell us about the space, your needs and scope. That gives us the input for an initial estimate.'],
-        ['2', 'Concept', 'We organise functions, integrations and priorities, focusing on what actually creates value.'],
-        ['3', 'Design & implementation', 'We configure the system, scenes and automations and prepare it for daily use.'],
-        ['4', 'Evolution', 'The system can grow with your space — adding rooms, devices and new scenarios over time.']
+        ['Short questionnaire', 'Tell us about the space, your needs and scope. That gives us the input for an initial estimate.'],
+        ['Concept', 'We organise functions, integrations and priorities, focusing on what actually creates value.'],
+        ['Design & implementation', 'We configure the system, scenes and automations and prepare it for daily use.'],
+        ['Evolution', 'The system can grow with your space — adding rooms, devices and new scenarios over time.']
       ]
     },
     local: {
