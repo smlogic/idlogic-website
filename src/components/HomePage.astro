@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
+import FeatureCard from './FeatureCard.astro';
 import { BRAND_NAME, CONTACT_EMAIL, QUESTIONNAIRE_URL } from '../config';
 import { copy, type Lang } from '../i18n';
 
@@ -61,13 +62,7 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
       <div class="shell cards-grid">
-        {t.cards.map((card) => (
-          <article class="feature-card">
-            <div class="card-top"><span>{card.number}</span><span class="mini-plus">+</span></div>
-            <h3>{card.title}</h3>
-            <p>{card.text}</p>
-          </article>
-        ))}
+        {t.cards.map((card, index) => <FeatureCard card={card} index={index} lang={lang} />)}
       </div>
     </section>
 

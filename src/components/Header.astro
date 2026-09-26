@@ -4,6 +4,7 @@ import type { Lang } from '../i18n';
 
 interface Props {
   lang: Lang;
+  path?: string;
   nav: {
     solutions: string;
     approach: string;
@@ -13,23 +14,24 @@ interface Props {
   };
 }
 
-const { lang, nav } = Astro.props;
+const { lang, nav, path = '' } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const plHref = base;
-const enHref = `${base}en/`;
+const plHref = `${base}${path}`;
+const enHref = `${base}en/${path}`;
+const homeHref = lang === 'pl' ? base : `${base}en/`;
 ---
 <header class="site-header">
   <div class="shell header-inner">
-    <a class="brand" href={lang === 'pl' ? plHref : enHref} aria-label={`${BRAND_NAME} — home`}>
+    <a class="brand" href={homeHref} aria-label={`${BRAND_NAME} — home`}>
       <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
       <span>{BRAND_NAME}</span>
     </a>
 
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#rozwiazania">{nav.solutions}</a>
-      <a href="#proces">{nav.approach}</a>
-      <a href="#prywatnosc">{nav.privacy}</a>
-      <a href="#kontakt">{nav.contact}</a>
+      <a href={`${homeHref}#rozwiazania`}>{nav.solutions}</a>
+      <a href={`${homeHref}#proces`}>{nav.approach}</a>
+      <a href={`${homeHref}#prywatnosc`}>{nav.privacy}</a>
+      <a href={`${homeHref}#kontakt`}>{nav.contact}</a>
     </nav>
 
     <div class="header-actions">
@@ -48,10 +50,10 @@ const enHref = `${base}en/`;
       <summary aria-label="Open menu"><span></span><span></span></summary>
       <div class="mobile-panel">
         <nav aria-label="Mobile navigation">
-          <a href="#rozwiazania">{nav.solutions}</a>
-          <a href="#proces">{nav.approach}</a>
-          <a href="#prywatnosc">{nav.privacy}</a>
-          <a href="#kontakt">{nav.contact}</a>
+          <a href={`${homeHref}#rozwiazania`}>{nav.solutions}</a>
+          <a href={`${homeHref}#proces`}>{nav.approach}</a>
+          <a href={`${homeHref}#prywatnosc`}>{nav.privacy}</a>
+          <a href={`${homeHref}#kontakt`}>{nav.contact}</a>
         </nav>
         <div class="mobile-panel-bottom">
           <div class="language-switch">

@@ -34,17 +34,14 @@ export const copy = {
     },
     cards: [
       {
-        number: '01',
         title: 'Smart home',
         text: 'Sterowanie domem, sceny, monitoring zużycia energii i automatyzacje dopasowane do codziennych nawyków.'
       },
       {
-        number: '02',
         title: 'Smart office',
         text: 'Nowoczesne biuro: komfort, dostęp, sale spotkań, oświetlenie i energia zarządzane jako jeden system.'
       },
       {
-        number: '03',
         title: 'Integracje',
         text: 'Łączymy urządzenia i standardy różnych producentów, aby system można było rozwijać bez kosztownej wymiany wszystkiego.'
       }
@@ -116,17 +113,14 @@ export const copy = {
     },
     cards: [
       {
-        number: '01',
         title: 'Smart home',
         text: 'Whole-home control, scenes, energy insights and automations built around the way you actually live.'
       },
       {
-        number: '02',
         title: 'Smart office',
         text: 'A modern workplace where comfort, access, meeting rooms, lighting and energy work together as one system.'
       },
       {
-        number: '03',
         title: 'Integrations',
         text: 'We connect devices and standards from different vendors, so the system can evolve without replacing everything.'
       }

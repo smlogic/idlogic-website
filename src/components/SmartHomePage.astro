@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import { BRAND_NAME } from '../config';
+import { copy, type Lang } from '../i18n';
+import { smartHomeCopy } from '../smartHome';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = smartHomeCopy[lang];
+const base = import.meta.env.BASE_URL;
+const home = lang === 'pl' ? base : `${base}en/`;
+const image = (file: string) => `${base}smart-home/${file}`;
+const ids = ['lighting', 'climate', 'shading', 'water', 'alerts', 'energy'];
+const firstScene = t.lighting.scenes[0];
+const imageSizes: Record<string, [number, number]> = {
+  climate: [1407, 794], shading: [1418, 787], water: [1415, 785],
+  alerts: [1418, 776], energy: [1576, 1637]
+};
+---
+<BaseLayout lang={lang} title={t.metaTitle} description={t.metaDescription} path="smart-home/">
+  <main class="smart-page">
+    <section class="smart-hero">
+      <Header lang={lang} nav={copy[lang].nav} path="smart-home/" />
+      <div class="shell smart-hero-content">
+        <a class="smart-back" href={home}><span aria-hidden="true">←</span> {t.back}</a>
+        <div class="smart-hero-heading">
+          <div>
+            <p class="section-kicker">{t.eyebrow}</p>
+            <h1>{t.title}</h1>
+          </div>
+          <p>{t.intro}</p>
+        </div>
+        <figure class="smart-hero-visual">
+          <img src={image('lighting.webp')} width="1417" height="796" alt={t.previewLabel} fetchpriority="high" />
+          <figcaption><span class="smart-visual-dot" aria-hidden="true"></span>{t.previewLabel}</figcaption>
+        </figure>
+        <p class="smart-preview-note">{t.previewNote}</p>
+      </div>
+    </section>
+
+    <nav class="smart-jump" aria-label={t.jumpLabel}>
+      <div class="shell smart-jump-inner">
+        <span class="smart-jump-label">{t.jumpLabel}</span>
+        <div class="smart-jump-links">
+          {ids.map((id, i) => <a href={`#${id}`}>{t.nav[i]} <span aria-hidden="true">↗</span></a>)}
+        </div>
+      </div>
+    </nav>
+
+    <section class="smart-lighting section" id="lighting">
+      <div class="shell">
+        <div class="smart-section-heading">
+          <div><p class="section-kicker">{t.lighting.eyebrow}</p><h2>{t.lighting.title}</h2></div>
+          <p>{t.lighting.text}</p>
+        </div>
+        <div class="smart-scene-switcher" role="group" aria-label={t.lighting.sceneLabel}>
+          {t.lighting.scenes.map((scene, i) => (
+            <button type="button" class:list={['smart-scene-button', { active: i === 0 }]} data-scene-select data-image={image(scene.image)} data-alt={scene.alt} data-detail={scene.detail} aria-pressed={i === 0 ? 'true' : 'false'}>
+              <span class="smart-scene-indicator" aria-hidden="true"></span>
+              <strong>{scene.title}</strong>
+              <small>{scene.detail}</small>
+            </button>
+          ))}
+        </div>
+        <figure class="smart-scene-visual">
+          <a data-scene-full href={image(firstScene.image)} target="_blank" rel="noopener" aria-label={firstScene.alt}>
+            <img data-scene-preview src={image(firstScene.image)} width="1771" height="995" alt={firstScene.alt} decoding="async" loading="lazy" />
+          </a>
+          <figcaption data-scene-caption aria-live="polite">{firstScene.detail}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    {t.sections.map((section, i) => (
+      <section class:list={['smart-feature', { 'smart-feature-alt': i % 2 === 1 }]} id={section.id}>
+        <div class="shell smart-feature-grid">
+          <div class="smart-feature-copy">
+            <p class="section-kicker">{section.eyebrow}</p>
+            <h2>{section.title}</h2>
+            <p>{section.text}</p>
+          </div>
+          <a class="smart-feature-image" href={image(section.image)} target="_blank" rel="noopener" aria-label={section.alt}>
+            <img src={image(section.image)} width={imageSizes[section.id][0]} height={imageSizes[section.id][1]} alt={section.alt} loading="lazy" decoding="async" />
+          </a>
+        </div>
+      </section>
+    ))}
+
+    <section class="smart-final">
+      <div class="shell smart-final-inner">
+        <div><p class="section-kicker">Smart home · IDLogic</p><h2>{t.ctaTitle}</h2></div>
+        <div><p>{t.ctaBody}</p><a class="button button-dark" href={`${home}#kontakt`}>{t.cta}<span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer smart-footer"><div class="shell smart-footer-inner">
+    <a class="brand brand-footer" href={home}><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>{BRAND_NAME}</span></a>
+    <a href={home}>{t.back} ↗</a>
+    <div class="language-switch"><a class:list={[{ active: lang === 'pl' }]} href={`${base}smart-home/`} lang="pl">PL</a><span>/</span><a class:list={[{ active: lang === 'en' }]} href={`${base}en/smart-home/`} lang="en">EN</a></div>
+  </div></footer>
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-scene-select]');
+  const preview = document.querySelector<HTMLImageElement>('[data-scene-preview]');
+  const fullImage = document.querySelector<HTMLAnchorElement>('[data-scene-full]');
+  const caption = document.querySelector<HTMLElement>('[data-scene-caption]');
+  buttons.forEach((button) => button.addEventListener('click', () => {
+    if (!preview || !caption) return;
+    buttons.forEach((item) => { item.classList.remove('active'); item.setAttribute('aria-pressed', 'false'); });
+    button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
+    preview.src = button.dataset.image || preview.src;
+    preview.alt = button.dataset.alt || preview.alt;
+    if (fullImage) {
+      fullImage.href = preview.src;
+      fullImage.setAttribute('aria-label', preview.alt);
+    }
+    caption.textContent = button.dataset.detail || '';
+  }));
+</script>
