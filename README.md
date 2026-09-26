@@ -34,6 +34,12 @@ npm run preview
 
 The static build is created in `dist/`.
 
+Astro also generates `sitemap-index.xml`. For the current project URL, submit
+`https://smlogic.github.io/idlogic-website/sitemap-index.xml` in Google Search Console
+after deployment. The favicon SVG is accompanied by PNG and Apple touch icons.
+Google uses one search-result favicon per hostname; a dedicated domain is needed
+for IDLogic's own search-result icon instead of sharing `smlogic.github.io`.
+
 ## 4. Publish for free on GitHub Pages
 
 1. Create a GitHub repository and push this project to the `main` branch.

@@ -28,11 +28,17 @@ const enUrl = Astro.site ? new URL(`${base}en/`, Astro.site) : undefined;
     {enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
     {plUrl && <link rel="alternate" hreflang="x-default" href={plUrl} />}
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="icon" href={`${base}favicon-192.png`} type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} sizes="180x180" />
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={BRAND_NAME} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:locale" content={lang === 'pl' ? 'pl_PL' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'pl' ? 'en_US' : 'pl_PL'} />
+    <meta name="twitter:card" content="summary" />
   </head>
   <body>
     <slot />
