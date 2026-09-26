@@ -22,7 +22,9 @@ export const copy = {
     hero: {
       eyebrow: 'Smart home · Smart office · Warszawa',
       first: 'Twój',
-      words: ['smart', 'prywatny', 'bezpieczny', '_______'],
+      words: ['smart', 'prywatny', 'bezpieczny', ''],
+      wordPrompt: 'Twoje słowo',
+      accessibleTitle: 'Twój dom: smart, prywatny, bezpieczny i taki, jak chcesz.',
       noun: 'dom.',
       body: 'Projektujemy inteligentne przestrzenie, które upraszczają codzienność — bez zamykania Cię w jednym ekosystemie.',
       primary: 'Przejdź do formularza',
@@ -103,7 +105,9 @@ export const copy = {
     hero: {
       eyebrow: 'Smart home · Smart office · Warsaw',
       first: 'Your',
-      words: ['smart', 'private', 'secure', '_______'],
+      words: ['smart', 'private', 'secure', ''],
+      wordPrompt: 'Your word',
+      accessibleTitle: 'Your home: smart, private, secure and uniquely yours.',
       noun: 'home.',
       body: 'We design intelligent spaces that simplify everyday life — without locking you into a single ecosystem.',
       primary: 'Open the questionnaire',

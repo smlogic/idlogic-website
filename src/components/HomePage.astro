@@ -44,11 +44,11 @@ const currentYear = new Date().getFullYear();
             <p class="hero-intro">{t.hero.body}</p>
           </div>
           <h1 class="hero-type">
-            <span class="sr-only">{t.hero.first} {t.hero.words.join(', ')} {t.hero.noun}</span>
+            <span class="sr-only">{t.hero.accessibleTitle}</span>
             <span class="hero-first" aria-hidden="true">{t.hero.first}</span>
             <span class="hero-word-window" aria-hidden="true">
               <span class="hero-word-stack">
-                {t.hero.words.map((word, i) => <span class:list={[{ lineword: i === 3 }]}>{word}</span>)}
+                {t.hero.words.map((word, i) => <span class:list={[{ lineword: i === 3 }]}>{i === 3 ? <small>{t.hero.wordPrompt}</small> : word}</span>)}
                 <span>{t.hero.words[0]}</span>
               </span>
             </span>
