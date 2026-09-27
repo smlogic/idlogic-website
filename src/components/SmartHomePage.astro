@@ -13,6 +13,10 @@ const home = lang === 'pl' ? base : `${base}en/`;
 const image = (file: string) => `${base}smart-home/${file}`;
 const ids = ['lighting', 'climate', 'shading', 'water', 'alerts', 'energy'];
 const firstScene = t.lighting.scenes[0];
+const sceneSizes: Record<string, [number, number]> = {
+  'scene-relax.webp': [1771, 995], 'scene-cleaning.webp': [1573, 884],
+  'scene-night.webp': [1774, 999], 'scene-off.webp': [1652, 928]
+};
 const imageSizes: Record<string, [number, number]> = {
   climate: [1407, 794], shading: [1418, 787], water: [1415, 785],
   alerts: [1418, 776], energy: [1576, 1637]
@@ -32,7 +36,7 @@ const imageSizes: Record<string, [number, number]> = {
           <p>{t.intro}</p>
         </div>
         <figure class="smart-hero-visual">
-          <img src={image('lighting.webp')} width="1417" height="796" alt={t.previewLabel} fetchpriority="high" />
+          <img src={image('overview.webp')} width="1778" height="1001" alt={t.previewLabel} fetchpriority="high" />
           <figcaption><span class="smart-visual-dot" aria-hidden="true"></span>{t.previewLabel}</figcaption>
         </figure>
         <p class="smart-preview-note">{t.previewNote}</p>
@@ -54,9 +58,13 @@ const imageSizes: Record<string, [number, number]> = {
           <div><p class="section-kicker">{t.lighting.eyebrow}</p><h2>{t.lighting.title}</h2></div>
           <p>{t.lighting.text}</p>
         </div>
-        <div class="smart-scene-switcher" role="group" aria-label={t.lighting.sceneLabel}>
+        <div class="smart-view-switcher" role="group" aria-label={t.lighting.viewLabel}>
+          <button class="smart-view-button active" type="button" data-lighting-view="scenes" aria-pressed="true">{t.lighting.scenesView}</button>
+          <button class="smart-view-button" type="button" data-lighting-view="controls" data-image={image('lighting.webp')} data-alt={t.lighting.controlsAlt} data-caption={t.lighting.controlsView} aria-pressed="false">{t.lighting.controlsView}</button>
+        </div>
+        <div class="smart-scene-switcher" data-scene-switcher role="group" aria-label={t.lighting.sceneLabel}>
           {t.lighting.scenes.map((scene, i) => (
-            <button type="button" class:list={['smart-scene-button', { active: i === 0 }]} data-scene-select data-image={image(scene.image)} data-alt={scene.alt} data-detail={scene.detail} aria-pressed={i === 0 ? 'true' : 'false'}>
+            <button type="button" class:list={['smart-scene-button', { active: i === 0 }]} data-scene-select data-image={image(scene.image)} data-alt={scene.alt} data-detail={scene.detail} data-width={sceneSizes[scene.image][0]} data-height={sceneSizes[scene.image][1]} aria-pressed={i === 0 ? 'true' : 'false'}>
               <span class="smart-scene-indicator" aria-hidden="true"></span>
               <strong>{scene.title}</strong>
               <small>{scene.detail}</small>
@@ -82,9 +90,9 @@ const imageSizes: Record<string, [number, number]> = {
           </div>
           {section.id === 'climate' ? (
             <div class="smart-climate-gallery">
-              <div class="smart-climate-switcher" role="group" aria-label={t.climatePlan.label}>
-                <button class="smart-climate-button active" type="button" data-climate-select data-image={image('climate-plan.webp')} data-alt={t.climatePlan.alt} data-width="1423" data-height="788" aria-pressed="true">{t.climatePlan.plan}</button>
-                <button class="smart-climate-button" type="button" data-climate-select data-image={image(section.image)} data-alt={section.alt} data-width="1407" data-height="794" aria-pressed="false">{t.climatePlan.settings}</button>
+              <div class="smart-view-switcher" role="group" aria-label={t.climatePlan.label}>
+                <button class="smart-view-button active" type="button" data-climate-select data-image={image('climate-plan.webp')} data-alt={t.climatePlan.alt} data-width="1423" data-height="788" aria-pressed="true">{t.climatePlan.plan}</button>
+                <button class="smart-view-button" type="button" data-climate-select data-image={image(section.image)} data-alt={section.alt} data-width="1407" data-height="794" aria-pressed="false">{t.climatePlan.settings}</button>
               </div>
               <a class="smart-feature-image" data-climate-full href={image('climate-plan.webp')} target="_blank" rel="noopener" aria-label={t.climatePlan.alt}>
                 <img data-climate-preview src={image('climate-plan.webp')} width="1423" height="788" alt={t.climatePlan.alt} loading="lazy" decoding="async" />
@@ -118,18 +126,37 @@ const imageSizes: Record<string, [number, number]> = {
   const preview = document.querySelector<HTMLImageElement>('[data-scene-preview]');
   const fullImage = document.querySelector<HTMLAnchorElement>('[data-scene-full]');
   const caption = document.querySelector<HTMLElement>('[data-scene-caption]');
-  buttons.forEach((button) => button.addEventListener('click', () => {
+  const sceneSwitcher = document.querySelector<HTMLElement>('[data-scene-switcher]');
+  const lightingViews = document.querySelectorAll<HTMLButtonElement>('[data-lighting-view]');
+  const showLightingImage = (button: HTMLButtonElement) => {
     if (!preview || !caption) return;
-    buttons.forEach((item) => { item.classList.remove('active'); item.setAttribute('aria-pressed', 'false'); });
-    button.classList.add('active');
-    button.setAttribute('aria-pressed', 'true');
     preview.src = button.dataset.image || preview.src;
     preview.alt = button.dataset.alt || preview.alt;
+    preview.width = Number(button.dataset.width) || (button.dataset.lightingView === 'controls' ? 1417 : preview.width);
+    preview.height = Number(button.dataset.height) || (button.dataset.lightingView === 'controls' ? 796 : preview.height);
     if (fullImage) {
       fullImage.href = preview.src;
       fullImage.setAttribute('aria-label', preview.alt);
     }
-    caption.textContent = button.dataset.detail || '';
+    caption.textContent = button.dataset.detail || button.dataset.caption || '';
+  };
+  buttons.forEach((button) => button.addEventListener('click', () => {
+    buttons.forEach((item) => { item.classList.remove('active'); item.setAttribute('aria-pressed', 'false'); });
+    button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
+    showLightingImage(button);
+  }));
+  lightingViews.forEach((button) => button.addEventListener('click', () => {
+    lightingViews.forEach((item) => { item.classList.remove('active'); item.setAttribute('aria-pressed', 'false'); });
+    button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
+    const controls = button.dataset.lightingView === 'controls';
+    if (sceneSwitcher) sceneSwitcher.hidden = controls;
+    if (controls) showLightingImage(button);
+    else {
+      const activeScene = Array.from(buttons).find((item) => item.getAttribute('aria-pressed') === 'true') || buttons[0];
+      if (activeScene) showLightingImage(activeScene);
+    }
   }));
 
   const climateButtons = document.querySelectorAll<HTMLButtonElement>('[data-climate-select]');

@@ -334,6 +334,7 @@ a.announcement:focus-visible { outline: 2px solid var(--ink); outline-offset: 3p
 .smart-section-heading h2, .smart-feature h2, .smart-final h2 { margin: 14px 0 0; font-size: clamp(47px, 5.7vw, 88px); line-height: .98; letter-spacing: -.065em; font-weight: 560; max-width: 12ch; }
 .smart-section-heading > p { max-width: 45ch; margin: 0 0 6px; font-size: 19px; line-height: 1.5; color: #48534e; }
 .smart-scene-switcher { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
+.smart-scene-switcher[hidden] { display: none; }
 .smart-scene-button { display: grid; align-content: start; gap: 8px; text-align: left; min-height: 120px; padding: 19px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255,255,255,.45); color: var(--ink); cursor: pointer; font: inherit; transition: background .2s ease, border-color .2s ease; }
 .smart-scene-button.active, .smart-scene-button:hover { background: #e0eae1; border-color: #699a77; }
 .smart-scene-button:focus-visible { outline: 2px solid #20644a; outline-offset: 3px; }
@@ -349,10 +350,10 @@ a.announcement:focus-visible { outline: 2px solid var(--ink); outline-offset: 3p
 .smart-feature-copy { align-self: center; }
 .smart-feature-copy > p:last-child { margin-top: 34px; font-size: 19px; line-height: 1.55; max-width: 39ch; color: #455049; }
 .smart-climate-gallery { min-width: 0; }
-.smart-climate-switcher { display: flex; gap: 8px; margin-bottom: 14px; }
-.smart-climate-button { padding: 10px 17px; border: 1px solid rgba(16,19,23,.24); border-radius: 999px; background: transparent; color: var(--ink); cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; transition: background .2s ease, border-color .2s ease; }
-.smart-climate-button.active, .smart-climate-button:hover { background: #dce9dc; border-color: #698c72; }
-.smart-climate-button:focus-visible { outline: 2px solid #20644a; outline-offset: 3px; }
+.smart-view-switcher { display: flex; gap: 8px; margin-bottom: 14px; }
+.smart-view-button { padding: 10px 17px; border: 1px solid rgba(16,19,23,.24); border-radius: 999px; background: transparent; color: var(--ink); cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; transition: background .2s ease, border-color .2s ease; }
+.smart-view-button.active, .smart-view-button:hover { background: #dce9dc; border-color: #698c72; }
+.smart-view-button:focus-visible { outline: 2px solid #20644a; outline-offset: 3px; }
 .smart-feature-image { display: block; border-radius: 24px; background: #1e4739; padding: 12px; box-shadow: 0 25px 60px rgba(12,45,31,.17); transition: transform .25s ease; }
 .smart-feature-image:hover { transform: translateY(-4px); }
 .smart-feature-image img { display: block; width: 100%; height: auto; max-height: 670px; object-fit: contain; border-radius: 13px; }
