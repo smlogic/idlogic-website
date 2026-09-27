@@ -22,6 +22,12 @@ export const smartHomeCopy = {
         { title: 'Wszystko wyłączone', detail: 'Jedno polecenie dla całego domu', image: 'scene-off.webp', alt: 'Plan domu z wyłączonymi światłami' }
       ]
     },
+    climatePlan: {
+      label: 'Widok klimatu',
+      plan: 'Plan domu',
+      settings: 'Ustawienia',
+      alt: 'Plan domu z temperaturą i wilgotnością w poszczególnych pomieszczeniach'
+    },
     sections: [
       { id: 'climate', eyebrow: 'Komfort', title: 'Klimat w każdym pomieszczeniu.', text: 'Ustawienia temperatury, wentylacji i wilgotności mogą reagować na porę dnia i tryb domu. Na ekranie widać osobne strefy oraz parametry komfortu.', image: 'climate.webp', alt: 'Przykładowy ekran sterowania temperaturą, klimatyzacją i wentylacją' },
       { id: 'shading', eyebrow: 'Osłony', title: 'Rolety pracują razem z domem.', text: 'Sterowanie roletami i napędami pozwala ustawić zachowanie osłon dla poszczególnych pomieszczeń oraz scen związanych ze słońcem i obecnością.', image: 'shading.webp', alt: 'Przykładowy ekran automatycznego sterowania roletami' },
@@ -55,6 +61,12 @@ export const smartHomeCopy = {
         { title: 'Night', detail: 'Gentle wayfinding lights', image: 'scene-night.webp', alt: 'Home floor plan with low lighting in the Night scene' },
         { title: 'All off', detail: 'One command for the whole home', image: 'scene-off.webp', alt: 'Home floor plan with all lights turned off' }
       ]
+    },
+    climatePlan: {
+      label: 'Climate views',
+      plan: 'Home view',
+      settings: 'Settings',
+      alt: 'Home floor plan showing temperature and humidity in each room'
     },
     sections: [
       { id: 'climate', eyebrow: 'Comfort', title: 'Climate in every room.', text: 'Temperature, ventilation and humidity can respond to time of day and the home’s mode. The screen shows separate zones and comfort settings.', image: 'climate.webp', alt: 'Example temperature, air conditioning and ventilation controls' },

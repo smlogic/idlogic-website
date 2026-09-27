@@ -80,9 +80,21 @@ const imageSizes: Record<string, [number, number]> = {
             <h2>{section.title}</h2>
             <p>{section.text}</p>
           </div>
-          <a class="smart-feature-image" href={image(section.image)} target="_blank" rel="noopener" aria-label={section.alt}>
-            <img src={image(section.image)} width={imageSizes[section.id][0]} height={imageSizes[section.id][1]} alt={section.alt} loading="lazy" decoding="async" />
-          </a>
+          {section.id === 'climate' ? (
+            <div class="smart-climate-gallery">
+              <div class="smart-climate-switcher" role="group" aria-label={t.climatePlan.label}>
+                <button class="smart-climate-button active" type="button" data-climate-select data-image={image('climate-plan.webp')} data-alt={t.climatePlan.alt} data-width="1423" data-height="788" aria-pressed="true">{t.climatePlan.plan}</button>
+                <button class="smart-climate-button" type="button" data-climate-select data-image={image(section.image)} data-alt={section.alt} data-width="1407" data-height="794" aria-pressed="false">{t.climatePlan.settings}</button>
+              </div>
+              <a class="smart-feature-image" data-climate-full href={image('climate-plan.webp')} target="_blank" rel="noopener" aria-label={t.climatePlan.alt}>
+                <img data-climate-preview src={image('climate-plan.webp')} width="1423" height="788" alt={t.climatePlan.alt} loading="lazy" decoding="async" />
+              </a>
+            </div>
+          ) : (
+            <a class="smart-feature-image" href={image(section.image)} target="_blank" rel="noopener" aria-label={section.alt}>
+              <img src={image(section.image)} width={imageSizes[section.id][0]} height={imageSizes[section.id][1]} alt={section.alt} loading="lazy" decoding="async" />
+            </a>
+          )}
         </div>
       </section>
     ))}
@@ -118,5 +130,21 @@ const imageSizes: Record<string, [number, number]> = {
       fullImage.setAttribute('aria-label', preview.alt);
     }
     caption.textContent = button.dataset.detail || '';
+  }));
+
+  const climateButtons = document.querySelectorAll<HTMLButtonElement>('[data-climate-select]');
+  const climatePreview = document.querySelector<HTMLImageElement>('[data-climate-preview]');
+  const climateFull = document.querySelector<HTMLAnchorElement>('[data-climate-full]');
+  climateButtons.forEach((button) => button.addEventListener('click', () => {
+    if (!climatePreview || !climateFull) return;
+    climateButtons.forEach((item) => { item.classList.remove('active'); item.setAttribute('aria-pressed', 'false'); });
+    button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
+    climatePreview.src = button.dataset.image || climatePreview.src;
+    climatePreview.alt = button.dataset.alt || climatePreview.alt;
+    climatePreview.width = Number(button.dataset.width) || climatePreview.width;
+    climatePreview.height = Number(button.dataset.height) || climatePreview.height;
+    climateFull.href = climatePreview.src;
+    climateFull.setAttribute('aria-label', climatePreview.alt);
   }));
 </script>
