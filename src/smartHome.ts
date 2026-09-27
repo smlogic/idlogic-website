@@ -8,8 +8,23 @@ export const smartHomeCopy = {
     intro: 'Światło, temperatura, rolety, bezpieczeństwo i zużycie mediów w jednym miejscu. Poniżej pokazujemy przykładowe ekrany systemu Home Assistant oraz sceny dopasowane do codziennych sytuacji.',
     previewLabel: 'Przykładowy ekran główny inteligentnego domu',
     previewNote: 'Wizualizacje przykładowego interfejsu; zakres funkcji zależy od projektu i podłączonych urządzeń.',
+    previewOpen: 'Otwórz cały ekran',
     jumpLabel: 'Przejdź do funkcji',
-    nav: ['Oświetlenie', 'Klimat', 'Rolety', 'Woda', 'Alarmy', 'Energia'],
+    nav: ['Demo', 'Oświetlenie', 'Klimat', 'Rolety', 'Woda', 'Alarmy', 'Energia'],
+    demo: {
+      eyebrow: 'Jeden dom · trzy chwile',
+      title: 'Zobacz, jak dom zmienia rytm.',
+      intro: 'Wybierz sytuację. Plan pokaże zmianę światła, a obok zobaczysz, jak mogą współpracować pozostałe funkcje domu.',
+      label: 'Wybierz przykładowy tryb domu',
+      caption: 'Przykładowa wizualizacja i opis scenariusza — nie jest to panel sterowania urządzeniami.',
+      open: 'Powiększ plan domu',
+      features: ['Światło', 'Klimat', 'Rolety', 'Czujniki'],
+      modes: [
+        { title: 'Relaks', image: 'scene-relax.webp', alt: 'Plan domu w scenie Relaks z ciepłym oświetleniem', description: 'Wieczór w domu. Jedna scena tworzy przyjemne światło, a pozostałe ustawienia mogą dostosować się do odpoczynku.', states: ['Ciepłe i miękkie', 'Komfort na wieczór', 'Osłona prywatności', 'Monitoring aktywny'] },
+        { title: 'Noc', image: 'scene-night.webp', alt: 'Plan domu w scenie Noc z dyskretnym oświetleniem', description: 'Dom wycisza się na noc. Zostają tylko delikatne punkty orientacyjne, a ważne czujniki nadal czuwają.', states: ['Dyskretna droga', 'Tryb nocny', 'Opuszczone', 'Monitoring aktywny'] },
+        { title: 'Poza domem', image: 'scene-off.webp', alt: 'Plan domu po wyłączeniu oświetlenia', description: 'Wychodzisz. Światła gasną, a dom może przejść w oszczędny tryb i powiadomić o ważnych zdarzeniach.', states: ['Wyłączone', 'Tryb oszczędny', 'Opuszczone', 'Powiadomienia'] }
+      ]
+    },
     lighting: {
       eyebrow: 'Oświetlenie i sceny',
       title: 'Nastrój zmienia się jednym dotknięciem.',
@@ -52,8 +67,23 @@ export const smartHomeCopy = {
     intro: 'Lighting, temperature, blinds, security and utility use in one place. Below are example Home Assistant screens and scenes designed around everyday moments.',
     previewLabel: 'Example smart home overview screen',
     previewNote: 'These are sample interface visuals; available functions depend on the project and connected devices.',
+    previewOpen: 'Open the full screen',
     jumpLabel: 'Explore features',
-    nav: ['Lighting', 'Climate', 'Blinds', 'Water', 'Alerts', 'Energy'],
+    nav: ['Demo', 'Lighting', 'Climate', 'Blinds', 'Water', 'Alerts', 'Energy'],
+    demo: {
+      eyebrow: 'One home · three moments',
+      title: 'See your home shift with you.',
+      intro: 'Choose a moment. The floor plan shows the lighting change, while the other systems show how they could work together.',
+      label: 'Choose an example home mode',
+      caption: 'An illustrative scene and scenario, not a live device control panel.',
+      open: 'Enlarge the home floor plan',
+      features: ['Lighting', 'Climate', 'Blinds', 'Sensors'],
+      modes: [
+        { title: 'Relax', image: 'scene-relax.webp', alt: 'Home floor plan in the Relax scene with warm lighting', description: 'An evening at home. One scene makes the light comfortable, while other settings can follow your evening routine.', states: ['Warm and soft', 'Evening comfort', 'Privacy shading', 'Monitoring on'] },
+        { title: 'Night', image: 'scene-night.webp', alt: 'Home floor plan in the Night scene with low lighting', description: 'The home settles for the night. Just a few wayfinding lights remain, while important sensors stay alert.', states: ['Gentle wayfinding', 'Night mode', 'Lowered', 'Monitoring on'] },
+        { title: 'Away', image: 'scene-off.webp', alt: 'Home floor plan with lighting switched off', description: 'You leave. The lights go out, and the home can switch to an energy saving mode and send important alerts.', states: ['Off', 'Energy saving', 'Lowered', 'Notifications'] }
+      ]
+    },
     lighting: {
       eyebrow: 'Lighting and scenes',
       title: 'Set the mood with one tap.',

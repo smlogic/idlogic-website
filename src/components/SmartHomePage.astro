@@ -11,8 +11,9 @@ const t = smartHomeCopy[lang];
 const base = import.meta.env.BASE_URL;
 const home = lang === 'pl' ? base : `${base}en/`;
 const image = (file: string) => `${base}smart-home/${file}`;
-const ids = ['lighting', 'climate', 'shading', 'water', 'alerts', 'energy'];
+const ids = ['demo', 'lighting', 'climate', 'shading', 'water', 'alerts', 'energy'];
 const firstScene = t.lighting.scenes[0];
+const firstMode = t.demo.modes[0];
 const sceneSizes: Record<string, [number, number]> = {
   'scene-relax.webp': [1771, 995], 'scene-cleaning.webp': [1573, 884],
   'scene-night.webp': [1774, 999], 'scene-off.webp': [1652, 928]
@@ -36,8 +37,10 @@ const imageSizes: Record<string, [number, number]> = {
           <p>{t.intro}</p>
         </div>
         <figure class="smart-hero-visual">
-          <img src={image('overview.webp')} width="1778" height="1001" alt={t.previewLabel} fetchpriority="high" />
-          <figcaption><span class="smart-visual-dot" aria-hidden="true"></span>{t.previewLabel}</figcaption>
+          <a href={image('overview-private.webp')} target="_blank" rel="noopener" aria-label={t.previewOpen}>
+            <img src={image('overview-private.webp')} width="1672" height="941" alt={t.previewLabel} fetchpriority="high" />
+          </a>
+          <figcaption><span class="smart-visual-dot" aria-hidden="true"></span>{t.previewLabel}<span class="smart-visual-open">{t.previewOpen} ↗</span></figcaption>
         </figure>
         <p class="smart-preview-note">{t.previewNote}</p>
       </div>
@@ -51,6 +54,38 @@ const imageSizes: Record<string, [number, number]> = {
         </div>
       </div>
     </nav>
+
+    <section class="smart-demo" id="demo" aria-labelledby="smart-demo-title">
+      <div class="shell">
+        <div class="smart-demo-heading">
+          <div><p class="section-kicker">{t.demo.eyebrow}</p><h2 id="smart-demo-title">{t.demo.title}</h2></div>
+          <p>{t.demo.intro}</p>
+        </div>
+        <div class="smart-demo-modes" role="group" aria-label={t.demo.label}>
+          {t.demo.modes.map((mode, i) => (
+            <button type="button" class:list={['smart-demo-mode', { active: i === 0 }]} data-demo-select data-image={image(mode.image)} data-alt={mode.alt} data-description={mode.description} data-states={JSON.stringify(mode.states)} data-width={sceneSizes[mode.image][0]} data-height={sceneSizes[mode.image][1]} aria-pressed={i === 0 ? 'true' : 'false'}>
+              <span aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{mode.title}
+            </button>
+          ))}
+        </div>
+        <div class="smart-demo-grid">
+          <figure class="smart-demo-visual">
+            <a data-demo-full href={image(firstMode.image)} target="_blank" rel="noopener" aria-label={t.demo.open}>
+              <img data-demo-image src={image(firstMode.image)} width={sceneSizes[firstMode.image][0]} height={sceneSizes[firstMode.image][1]} alt={firstMode.alt} decoding="async" />
+            </a>
+            <figcaption>{t.demo.caption}</figcaption>
+          </figure>
+          <div class="smart-demo-story" aria-live="polite" aria-atomic="true">
+            <p class="smart-demo-description" data-demo-description>{firstMode.description}</p>
+            <dl class="smart-demo-states">
+              {t.demo.features.map((feature, i) => (
+                <div><dt>{feature}</dt><dd data-demo-state>{firstMode.states[i]}</dd></div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="smart-lighting section" id="lighting">
       <div class="shell">
@@ -122,6 +157,26 @@ const imageSizes: Record<string, [number, number]> = {
 </BaseLayout>
 
 <script>
+  const demoButtons = document.querySelectorAll<HTMLButtonElement>('[data-demo-select]');
+  const demoImage = document.querySelector<HTMLImageElement>('[data-demo-image]');
+  const demoFull = document.querySelector<HTMLAnchorElement>('[data-demo-full]');
+  const demoDescription = document.querySelector<HTMLElement>('[data-demo-description]');
+  const demoStates = document.querySelectorAll<HTMLElement>('[data-demo-state]');
+  demoButtons.forEach((button) => button.addEventListener('click', () => {
+    if (!demoImage || !demoFull || !demoDescription) return;
+    demoButtons.forEach((item) => { item.classList.remove('active'); item.setAttribute('aria-pressed', 'false'); });
+    button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
+    demoImage.src = button.dataset.image || demoImage.src;
+    demoImage.alt = button.dataset.alt || demoImage.alt;
+    demoImage.width = Number(button.dataset.width) || demoImage.width;
+    demoImage.height = Number(button.dataset.height) || demoImage.height;
+    demoFull.href = demoImage.src;
+    demoDescription.textContent = button.dataset.description || '';
+    const states = JSON.parse(button.dataset.states || '[]') as string[];
+    demoStates.forEach((state, i) => { state.textContent = states[i] || ''; });
+  }));
+
   const buttons = document.querySelectorAll<HTMLButtonElement>('[data-scene-select]');
   const preview = document.querySelector<HTMLImageElement>('[data-scene-preview]');
   const fullImage = document.querySelector<HTMLAnchorElement>('[data-scene-full]');
