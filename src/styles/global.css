@@ -300,59 +300,6 @@ a.announcement:focus-visible { outline: 2px solid var(--ink); outline-offset: 3p
   }
 }
 
-/* On wide desktop displays the changing word stays between the fixed words. */
-@media (min-width: 1600px) {
-  .shell { width: min(1740px, calc(100% - 9vw)); }
-  .hero { min-height: min(980px, 100svh); }
-  .hero-inner { padding-top: 28px; }
-  .hero-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-    align-content: center;
-    justify-items: center;
-    min-height: clamp(540px, 55svh, 740px);
-    padding-top: 32px;
-  }
-  .hero-type {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: .12em;
-    width: 100%;
-    padding: 0;
-    font-size: clamp(80px, 5.1vw, 128px);
-    line-height: 1.12;
-    letter-spacing: -.075em;
-    white-space: nowrap;
-  }
-  .hero-first, .hero-noun {
-    display: inline-block;
-    flex: none;
-    margin: 0;
-    font-size: 1em;
-  }
-  .hero-word-window {
-    display: grid;
-    flex: none;
-    width: 5.25em;
-    max-width: none;
-    height: 1.12em;
-    margin: 0;
-    font-size: 1em;
-    text-align: left;
-  }
-  .hero-side {
-    order: 2;
-    justify-self: start;
-    align-self: start;
-    max-width: 470px;
-    margin-top: 36px;
-    padding: 0;
-  }
-  .hero-intro { max-width: 43ch; margin-top: 13px; }
-  .hero-bottom { align-items: center; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .hero-word-stack { animation: none; }
