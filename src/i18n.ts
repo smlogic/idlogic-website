@@ -16,7 +16,8 @@ export const copy = {
     announcement: {
       eyebrow: 'Zobacz w praktyce',
       title: 'Smart home od środka',
-      detail: 'Interfejs i sceny na przykładzie jednego domu'
+      detail: 'Interfejs i sceny na przykładzie jednego domu',
+      access: 'Login: guest · Hasło: guest'
     },
     officePreview: { status: 'W przygotowaniu' },
     hero: {
@@ -99,7 +100,8 @@ export const copy = {
     announcement: {
       eyebrow: 'See it in action',
       title: 'Inside a smart home',
-      detail: 'Interface and scenes from one sample home'
+      detail: 'Interface and scenes from one sample home',
+      access: 'Username: guest · Password: guest'
     },
     officePreview: { status: 'Coming soon' },
     hero: {
