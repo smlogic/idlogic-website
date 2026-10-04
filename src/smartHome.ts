@@ -18,6 +18,7 @@ export const smartHomeCopy = {
       label: 'Wybierz przykładowy tryb domu',
       caption: 'Przykładowa wizualizacja i opis scenariusza — nie jest to panel sterowania urządzeniami.',
       open: 'Powiększ plan domu',
+      fullDemo: 'Otwórz pełne demo',
       features: ['Światło', 'Klimat', 'Rolety', 'Czujniki'],
       modes: [
         { title: 'Relaks', image: 'scene-relax.webp', alt: 'Plan domu w scenie Relaks z ciepłym oświetleniem', description: 'Wieczór w domu. Jedna scena tworzy przyjemne światło, a pozostałe ustawienia mogą dostosować się do odpoczynku.', states: ['Ciepłe i miękkie', 'Komfort na wieczór', 'Osłona prywatności', 'Monitoring aktywny'] },
@@ -77,6 +78,7 @@ export const smartHomeCopy = {
       label: 'Choose an example home mode',
       caption: 'An illustrative scene and scenario, not a live device control panel.',
       open: 'Enlarge the home floor plan',
+      fullDemo: 'Open the full demo',
       features: ['Lighting', 'Climate', 'Blinds', 'Sensors'],
       modes: [
         { title: 'Relax', image: 'scene-relax.webp', alt: 'Home floor plan in the Relax scene with warm lighting', description: 'An evening at home. One scene makes the light comfortable, while other settings can follow your evening routine.', states: ['Warm and soft', 'Evening comfort', 'Privacy shading', 'Monitoring on'] },

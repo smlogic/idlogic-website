@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import FeatureCard from './FeatureCard.astro';
-import { BRAND_NAME, CONTACT_EMAIL, QUESTIONNAIRE_URL } from '../config';
+import { BRAND_NAME, CONTACT_EMAIL, DEMO_URL, QUESTIONNAIRE_URL } from '../config';
 import { copy, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
@@ -20,7 +20,7 @@ const currentYear = new Date().getFullYear();
       <Header lang={lang} nav={t.nav} />
       <div class="shell hero-inner">
         <div class="announcement-row">
-          <a class="announcement" href={`${base}${lang === 'en' ? 'en/' : ''}smart-home/`}>
+          <a class="announcement" href={DEMO_URL} target="_blank" rel="noopener noreferrer">
             <img class="announcement-image" src={`${base}smart-home/scene-cleaning.webp`} alt="" width="1573" height="884" decoding="async" />
             <span class="announcement-copy">
               <span class="announcement-eyebrow">{t.announcement.eyebrow}</span>

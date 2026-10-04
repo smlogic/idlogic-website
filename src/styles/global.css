@@ -344,6 +344,7 @@ a.announcement:focus-visible { outline: 2px solid var(--ink); outline-offset: 3p
 .smart-demo-mode.active span, .smart-demo-mode:hover span { color: #386c4c; }
 .smart-demo-mode:focus-visible { outline: 2px solid #c9e3cd; outline-offset: 3px; }
 .smart-demo-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, .65fr); gap: 16px; }
+.smart-demo-link { margin-top: 28px; color: #c9e3cd; }
 .smart-demo-visual { min-width: 0; margin: 0; background: #10261e; border: 1px solid #53745d; border-radius: 20px; overflow: hidden; }
 .smart-demo-visual a { display: block; }
 .smart-demo-visual a:focus-visible { outline: 3px solid #c9e3cd; outline-offset: -5px; }

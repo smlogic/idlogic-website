@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
-import { BRAND_NAME } from '../config';
+import { BRAND_NAME, DEMO_URL } from '../config';
 import { copy, type Lang } from '../i18n';
 import { smartHomeCopy } from '../smartHome';
 
@@ -84,6 +84,7 @@ const imageSizes: Record<string, [number, number]> = {
             </dl>
           </div>
         </div>
+        <a class="text-link smart-demo-link" href={DEMO_URL} target="_blank" rel="noopener noreferrer">{t.demo.fullDemo}<span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
