@@ -20,7 +20,7 @@ const currentYear = new Date().getFullYear();
       <Header lang={lang} nav={t.nav} />
       <div class="shell hero-inner">
         <div class="announcement-row">
-          <a class="announcement" href={DEMO_URL} target="_blank" rel="noopener noreferrer">
+          <a class="announcement" href={DEMO_URL} target="_blank" rel="noopener noreferrer" aria-haspopup="dialog" aria-controls="demo-info" data-demo-open>
             <img class="announcement-image" src={`${base}smart-home/scene-cleaning.webp`} alt="" width="1573" height="884" decoding="async" />
             <span class="announcement-copy">
               <span class="announcement-eyebrow">{t.announcement.eyebrow}</span>
@@ -49,7 +49,7 @@ const currentYear = new Date().getFullYear();
             <span class="hero-first" aria-hidden="true">{t.hero.first}</span>
             <span class="hero-word-window" aria-hidden="true">
               <span class="hero-word-stack">
-                {t.hero.words.map((word, i) => <span class:list={[{ lineword: i === 3 }]}>{i === 3 ? <small>{t.hero.wordPrompt}</small> : word}</span>)}
+                {t.hero.words.map((word, i) => <span class:list={[{ lineword: i === 3 }]}>{word}</span>)}
                 <span>{t.hero.words[0]}</span>
               </span>
             </span>
@@ -153,6 +153,21 @@ const currentYear = new Date().getFullYear();
     </section>
   </main>
 
+  <dialog id="demo-info" class="demo-dialog" aria-labelledby="demo-dialog-title">
+    <div class="demo-dialog-top">
+      <p class="section-kicker">{t.demoDialog.eyebrow}</p>
+      <button class="demo-dialog-close" type="button" aria-label={t.demoDialog.close} data-demo-close>×</button>
+    </div>
+    <h2 id="demo-dialog-title">{t.demoDialog.title}</h2>
+    <p class="demo-dialog-description">{t.demoDialog.description}</p>
+    <p class="demo-dialog-instruction">{t.demoDialog.instruction}</p>
+    <div class="demo-dialog-credentials">
+      <div><span>{t.demoDialog.username}</span><strong>guest</strong></div>
+      <div><span>{t.demoDialog.password}</span><strong>guest</strong></div>
+    </div>
+    <a class="button button-dark demo-dialog-action" href={DEMO_URL} target="_blank" rel="noopener noreferrer">{t.demoDialog.open}<span aria-hidden="true">↗</span></a>
+  </dialog>
+
   <footer class="footer">
     <div class="shell footer-grid">
       <div>
@@ -175,3 +190,17 @@ const currentYear = new Date().getFullYear();
     </div>
   </footer>
 </BaseLayout>
+
+<script>
+  const demoLink = document.querySelector<HTMLAnchorElement>('[data-demo-open]');
+  const demoDialog = document.querySelector<HTMLDialogElement>('#demo-info');
+  demoLink?.addEventListener('click', (event) => {
+    if (!demoDialog || typeof demoDialog.showModal !== 'function' || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    demoDialog.showModal();
+  });
+  demoDialog?.querySelector('[data-demo-close]')?.addEventListener('click', () => demoDialog.close());
+  demoDialog?.addEventListener('click', (event) => {
+    if (event.target === demoDialog) demoDialog.close();
+  });
+</script>

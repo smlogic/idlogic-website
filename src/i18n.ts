@@ -24,13 +24,22 @@ export const copy = {
       eyebrow: 'Smart home · Smart office · Warszawa',
       first: 'Twój',
       words: ['smart', 'prywatny', 'bezpieczny', ''],
-      wordPrompt: 'Twoje słowo',
       accessibleTitle: 'Twój dom: smart, prywatny, bezpieczny i taki, jak chcesz.',
       noun: 'dom.',
       body: 'Projektujemy inteligentne przestrzenie, które upraszczają codzienność — bez zamykania Cię w jednym ekosystemie.',
       primary: 'Przejdź do formularza',
       secondary: 'Poznaj nasze podejście',
       note: 'Formularz prowadzi do istniejącego procesu wyceny i przygotowania oferty.'
+    },
+    demoDialog: {
+      eyebrow: 'Demo · IDLogic',
+      title: 'Zobacz inteligentny dom w działaniu.',
+      description: 'To demonstracyjny interfejs inteligentnego domu na przykładzie jednego projektu. Poznaj sterowanie oświetleniem, klimatem i roletami oraz gotowe sceny.',
+      instruction: 'Aby wejść do demo, użyj tych danych:',
+      username: 'Nazwa użytkownika',
+      password: 'Hasło',
+      open: 'Otwórz demo',
+      close: 'Zamknij okno'
     },
     intro: {
       kicker: 'Technologia w tle',
@@ -108,13 +117,22 @@ export const copy = {
       eyebrow: 'Smart home · Smart office · Warsaw',
       first: 'Your',
       words: ['smart', 'private', 'secure', ''],
-      wordPrompt: 'Your word',
       accessibleTitle: 'Your home: smart, private, secure and uniquely yours.',
       noun: 'home.',
       body: 'We design intelligent spaces that simplify everyday life — without locking you into a single ecosystem.',
       primary: 'Open the questionnaire',
       secondary: 'See our approach',
       note: 'The questionnaire opens your existing quotation and offer workflow.'
+    },
+    demoDialog: {
+      eyebrow: 'Demo · IDLogic',
+      title: 'Explore a smart home in action.',
+      description: 'This is a demonstration interface based on one smart home project. Explore lighting, climate and blinds, along with ready-made scenes.',
+      instruction: 'Use these credentials to enter the demo:',
+      username: 'Username',
+      password: 'Password',
+      open: 'Open demo',
+      close: 'Close dialog'
     },
     intro: {
       kicker: 'Technology in the background',
