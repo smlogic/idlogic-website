@@ -151,7 +151,7 @@ const imageSizes: Record<string, [number, number]> = {
     </section>
   </main>
   <footer class="footer smart-footer"><div class="shell smart-footer-inner">
-    <a class="brand brand-footer" href={home}><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>{BRAND_NAME}</span></a>
+    <a class="brand brand-footer" href={home}><img class="brand-icon" src={`${base}logo-white.png`} width="43" height="27" alt="" loading="lazy" /><span>{BRAND_NAME}</span></a>
     <a href={home}>{t.back} ↗</a>
     <div class="language-switch"><a class:list={[{ active: lang === 'pl' }]} href={`${base}smart-home/`} lang="pl">PL</a><span>/</span><a class:list={[{ active: lang === 'en' }]} href={`${base}en/smart-home/`} lang="en">EN</a></div>
   </div></footer>
