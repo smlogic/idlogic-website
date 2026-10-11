@@ -279,6 +279,37 @@ a.announcement:focus-visible { outline: 2px solid var(--ink); outline-offset: 3p
   .footer-bottom { gap: 20px; align-items: end; }
 }
 
+/* Long Polish words can paint outside their line box during the mobile stack
+   slide. Animate each word separately so the previous one is fully hidden. */
+@media (max-width: 700px) {
+  html[lang="pl"] .hero-word-window {
+    display: grid;
+    align-items: center;
+    height: 1.12em;
+    line-height: 1.12;
+    clip-path: inset(0);
+  }
+  html[lang="pl"] .hero-word-stack { display: contents; animation: none; }
+  html[lang="pl"] .hero-word-stack > span {
+    grid-area: 1 / 1;
+    height: 1.12em;
+    line-height: 1.12;
+    opacity: 0;
+    transform: translateY(55%);
+    animation: flip-mobile-pl-word 16s linear infinite both;
+  }
+  html[lang="pl"] .hero-word-stack > span:nth-child(1) { animation-delay: -.48s; }
+  html[lang="pl"] .hero-word-stack > span:nth-child(2) { animation-delay: 3.52s; }
+  html[lang="pl"] .hero-word-stack > span:nth-child(3) { animation-delay: 7.52s; }
+  html[lang="pl"] .hero-word-stack > span:nth-child(4) { animation-delay: 11.52s; }
+  html[lang="pl"] .hero-word-stack > span:nth-child(5) { display: none; }
+  @keyframes flip-mobile-pl-word {
+    0% { opacity: 0; transform: translateY(55%); }
+    3%, 20% { opacity: 1; transform: translateY(0); }
+    25%, 100% { opacity: 0; transform: translateY(-55%); }
+  }
+}
+
 /* On desktop each word gets its own layer. The old word is fully hidden before
    the next one enters, so no glyph from an adjacent row can remain visible. */
 @media (min-width: 701px) {
