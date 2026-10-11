@@ -167,6 +167,7 @@ a.announcement:focus-visible { outline: 2px solid var(--ink); outline-offset: 3p
 .privacy-orbit::before, .privacy-orbit::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1px dashed rgba(255,255,255,.12); transform: scaleX(.48) rotate(32deg); }
 .privacy-orbit::after { transform: scaleY(.48) rotate(-25deg); }
 .orbit-center { position: absolute; inset: 39%; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #d8f3ff, #80a5bc 52%, #1d2933 72%); box-shadow: 0 0 80px rgba(122,191,229,.26); color: #0e1216; font-weight: 800; letter-spacing: -.08em; font-size: 38px; }
+.orbit-center img { display: block; width: 70%; max-width: 86px; height: auto; }
 
 .process-heading { align-items: end; }
 .process-heading h2 { margin: 0; }
