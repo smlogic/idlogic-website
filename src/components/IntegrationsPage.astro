@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import { BRAND_NAME, QUESTIONNAIRE_URL } from '../config';
+import { copy, type Lang } from '../i18n';
+import { integrationsCopy } from '../integrations';
+import '../styles/integrations.css';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = integrationsCopy[lang];
+const base = import.meta.env.BASE_URL;
+const home = lang === 'pl' ? base : `${base}en/`;
+const links = ['kompetencje', 'technologie', 'praktyka', 'api-ai', 'glos'];
+const initial = t.scenarios[0];
+---
+<BaseLayout lang={lang} title={t.metaTitle} description={t.metaDescription} path="integracje/">
+  <main class="integrations-page">
+    <section class="integration-hero" style={`--integration-brand-image:url('${base}gradient-about-header.jpg');--integration-noise-image:url('${base}noise.png')`}>
+      <Header lang={lang} nav={copy[lang].nav} path="integracje/" />
+      <div class="shell integration-hero-inner">
+        <a class="integration-back" href={home}><span aria-hidden="true">←</span> {t.back}</a>
+        <div class="integration-engineering-hero">
+          <div class="integration-engineering-copy">
+            <p class="integration-kicker"><span class="integration-pulse" aria-hidden="true"></span>{t.eyebrow}</p>
+            <h1>{t.titleLines.map((line) => <span>{line}</span>)}</h1>
+            <p class="integration-engineering-lead">{t.lead}</p>
+            <a class="button button-dark" href="#kompetencje">{t.explore}<span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="integration-architecture" aria-label={t.visualLabel}>
+            <p class="integration-architecture-label">{t.architectureLabel}<span aria-hidden="true">↗</span></p>
+            <div class="integration-architecture-hub"><img src={`${base}logo-white.png`} width="56" height="35" alt="" /><strong>IDLogic</strong><span>{lang === 'pl' ? 'Integracja systemów' : 'Systems integration'}</span></div>
+            <div class="integration-architecture-layers">
+              {t.architectureLayers.map((layer) => <div class="integration-architecture-layer"><div><h2>{layer.title}</h2><p>{layer.text}</p></div><small>{layer.protocols}</small></div>)}
+            </div>
+            <p class="integration-architecture-note">{t.heroNote}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="integration-nav" aria-label={t.navLabel}>
+      <div class="shell integration-nav-inner"><span>{t.navLabel}</span><div>{t.nav.map((item, i) => <a href={`#${links[i]}`}>{item}</a>)}</div></div>
+    </nav>
+
+    <section class="integration-section integration-expertise" id="kompetencje" aria-labelledby="integration-expertise-heading">
+      <div class="shell integration-expertise-grid">
+        <div class="integration-expertise-intro"><p class="integration-kicker">{t.expertiseEyebrow}</p><h2 id="integration-expertise-heading">{t.expertiseTitle}</h2><p>{t.expertiseBody}</p></div>
+        <div class="integration-expertise-list">{t.expertise.map((item) => <article><span aria-hidden="true">↗</span><div><h3>{item.title}</h3><p>{item.body}</p></div></article>)}</div>
+      </div>
+    </section>
+
+    <section class="integration-section integration-protocols" id="technologie" aria-labelledby="integration-protocols-heading">
+      <div class="shell">
+        <div class="integration-heading integration-heading-split"><div><p class="integration-kicker">{t.protocolEyebrow}</p><h2 id="integration-protocols-heading">{t.protocolTitle}</h2></div><p>{t.protocolIntro}</p></div>
+        <div class="integration-protocol-grid">
+          {t.groups.map((group, i) => <article class={`integration-protocol-card integration-protocol-card-${i + 1}`}>
+            <div class="integration-card-top"><span class="integration-card-symbol" aria-hidden="true">{group.icon}</span><small>{group.tag}</small></div>
+            <h3>{group.title}</h3><p>{group.body}</p>
+            <div class="integration-protocol-tags">{group.protocols.map((protocol) => <span>{protocol}</span>)}</div>
+          </article>)}
+        </div>
+        <p class="integration-protocol-note"><span aria-hidden="true">ⓘ</span>{t.protocolNote}</p>
+      </div>
+    </section>
+
+    <section class="integration-section integration-scenarios" id="praktyka" aria-labelledby="integration-scenarios-heading">
+      <div class="shell">
+        <div class="integration-heading"><p class="integration-kicker">{t.scenarioEyebrow}</p><h2 id="integration-scenarios-heading">{t.scenarioTitle}</h2><p>{t.scenarioIntro}</p></div>
+        <div class="integration-scenario-tabs" role="group" aria-label={t.scenarioLabel}>
+          {t.scenarios.map((scenario, i) => <button type="button" class:list={['integration-scenario-tab', { 'is-active': i === 0 }]} data-integration-scenario data-scenario={JSON.stringify(scenario)} aria-pressed={i === 0 ? 'true' : 'false'}><span>0{i + 1}</span>{scenario.title}<span aria-hidden="true">↗</span></button>)}
+        </div>
+        <div class="integration-flow" aria-live="polite" aria-atomic="true">
+          <div class="integration-flow-source"><span class="integration-flow-overline" data-trigger>{initial.trigger}</span><strong data-source>{initial.source}</strong><div class="integration-flow-icon" aria-hidden="true">◎</div></div>
+          <div class="integration-flow-connector" aria-label={t.flowConnector}><span aria-hidden="true">→</span><small>{t.flowConnector}</small></div>
+          <div class="integration-flow-actions" data-actions>{initial.actions.map((action, i) => <div><span>0{i + 1}</span><strong>{action}</strong><span aria-hidden="true">↗</span></div>)}</div>
+          <div class="integration-flow-result"><span class="integration-flow-overline">{t.flowResult}</span><p data-result>{initial.result}</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="integration-section integration-api" id="api-ai" aria-labelledby="integration-api-heading">
+      <div class="shell integration-api-grid">
+        <div class="integration-api-copy"><p class="integration-kicker">{t.apiEyebrow}</p><h2 id="integration-api-heading">{t.apiTitle}</h2><p>{t.apiBody}</p><div class="integration-api-pills">{t.apiPills.map((pill) => <span>{pill}</span>)}</div></div>
+        <div class="integration-api-visual" aria-hidden="true"><div class="integration-api-packet packet-one"><span>01</span>API <b>↗</b></div><div class="integration-api-packet packet-two"><span>02</span>DATA <b>↗</b></div><div class="integration-api-packet packet-three"><span>03</span>HOME <b>↗</b></div><div class="integration-api-line"></div></div>
+      </div>
+      <div class="shell"><div class="integration-ai-panel"><div class="integration-ai-copy"><p class="integration-kicker">{t.aiTag}</p><h3>{t.aiTitle}</h3><p>{t.aiBody}</p></div><div class="integration-ai-chat"><span class="integration-ai-chat-label">{t.aiExampleLabel}</span><div class="integration-ai-question"><span aria-hidden="true">✦</span>{t.aiExample}</div><p>{t.aiResponse}</p></div></div></div>
+    </section>
+
+    <section class="integration-section integration-voice" id="glos" aria-labelledby="integration-voice-heading">
+      <div class="shell integration-voice-grid">
+        <div><p class="integration-kicker">{t.voiceEyebrow}</p><h2 id="integration-voice-heading">{t.voiceTitle}</h2><p>{t.voiceBody}</p></div>
+        <figure class="integration-voice-card">
+          <figcaption class="integration-voice-example">{t.voiceExampleLabel}</figcaption>
+          <div class="integration-voice-command"><p>{t.voiceCommandLabel}</p><blockquote>{t.voiceQuote}</blockquote></div>
+          <div class="integration-voice-answer">
+            <div class="integration-voice-answer-title"><strong>{t.voiceSceneLabel}</strong><span><span aria-hidden="true">✓</span> {t.voiceActive}</span></div>
+            <dl class="integration-voice-states">{t.voiceStates.map((item) => <div><dt>{item.label}</dt><dd>{item.state}</dd></div>)}</dl>
+          </div>
+          <p class="integration-voice-card-bottom">{t.voiceResult}</p>
+        </figure>
+      </div>
+    </section>
+
+    <section class="integration-section integration-verify"><div class="shell integration-verify-grid"><div><p class="integration-kicker">{t.verifyEyebrow}</p><h2>{t.verifyTitle}</h2><p>{t.verifyBody}</p></div><ol>{t.verifySteps.map((step, i) => <li><span>0{i + 1}</span><strong>{step}</strong><span aria-hidden="true">↗</span></li>)}</ol></div></section>
+
+    <section class="integration-final"><div class="shell integration-final-grid"><div><p class="integration-kicker">{t.ctaEyebrow}</p><h2>{t.ctaTitle}</h2></div><div><p>{t.ctaBody}</p><a class="button button-dark" href={QUESTIONNAIRE_URL} target="_blank" rel="noopener noreferrer">{t.cta}<span aria-hidden="true">↗</span></a><a class="integration-smart-link" href={`${base}${lang === 'en' ? 'en/' : ''}smart-home/`}>{t.smartLink} ↗</a></div></div></section>
+  </main>
+  <footer class="footer integration-footer"><div class="shell integration-footer-inner"><a class="brand brand-footer" href={home}><img class="brand-icon" src={`${base}logo-white.png`} width="43" height="27" alt="" loading="lazy" /><span>{BRAND_NAME}</span></a><a href={home}>{t.back} ↗</a><div class="language-switch"><a class:list={[{ active: lang === 'pl' }]} href={`${base}integracje/`} lang="pl">PL</a><span>/</span><a class:list={[{ active: lang === 'en' }]} href={`${base}en/integracje/`} lang="en">EN</a></div></div></footer>
+</BaseLayout>
+
+<script>
+  type Scenario = { title: string; trigger: string; source: string; actions: readonly string[]; result: string };
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-integration-scenario]');
+  const source = document.querySelector<HTMLElement>('[data-source]');
+  const trigger = document.querySelector<HTMLElement>('[data-trigger]');
+  const actions = document.querySelector<HTMLElement>('[data-actions]');
+  const result = document.querySelector<HTMLElement>('[data-result]');
+  buttons.forEach((button) => button.addEventListener('click', () => {
+    if (!source || !trigger || !actions || !result) return;
+    const scenario = JSON.parse(button.dataset.scenario || '{}') as Scenario;
+    buttons.forEach((item) => { item.classList.remove('is-active'); item.setAttribute('aria-pressed', 'false'); });
+    button.classList.add('is-active'); button.setAttribute('aria-pressed', 'true');
+    source.textContent = scenario.source;
+    trigger.textContent = scenario.trigger;
+    result.textContent = scenario.result;
+    actions.replaceChildren(...scenario.actions.map((action, i) => {
+      const row = document.createElement('div');
+      const count = document.createElement('span'); count.textContent = `0${i + 1}`;
+      const label = document.createElement('strong'); label.textContent = action;
+      const arrow = document.createElement('span'); arrow.textContent = '↗'; arrow.setAttribute('aria-hidden', 'true');
+      row.append(count, label, arrow);
+      return row;
+    }));
+  }));
+</script>
