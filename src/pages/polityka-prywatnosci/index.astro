@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import LegalFooter from '../../components/LegalFooter.astro';
+import { BRAND_NAME, CONTACT_EMAIL, QUESTIONNAIRE_URL } from '../../config';
+import { copy } from '../../i18n';
+
+const base = import.meta.env.BASE_URL;
+const t = copy.pl;
+const sections = [
+  ['informacje-ogolne', 'Informacje ogólne'],
+  ['administrator', 'Administrator danych osobowych'],
+  ['zakres-danych', 'Zakres przetwarzanych danych'],
+  ['cele-podstawy', 'Cele i podstawy prawne przetwarzania danych'],
+  ['formularze', 'Formularze kontaktowe i komunikacja'],
+  ['cookies', 'Pliki cookies i narzędzia analityczne'],
+  ['odbiorcy', 'Odbiorcy danych'],
+  ['przechowywanie', 'Okres przechowywania danych'],
+  ['prawa', 'Prawa osób, których dane dotyczą'],
+  ['bezpieczenstwo', 'Bezpieczeństwo danych'],
+  ['idlogic-backup', 'Aplikacja idLogic Backup i integracja z Google Drive'],
+  ['kontakt', 'Kontakt w sprawach prywatności'],
+  ['zmiany', 'Zmiany polityki prywatności']
+];
+---
+<BaseLayout lang="pl" title="Polityka prywatności | idLogic" description="Zasady przetwarzania danych osobowych w serwisie idlogic.pl oraz w wewnętrznej aplikacji idLogic Backup korzystającej z Google Drive." path="polityka-prywatnosci/" robots="noindex,follow" alternateLanguages={false}>
+  <Header lang="pl" nav={t.nav} />
+  <main class="policy-page">
+    <div class="shell">
+      <article class="policy-article" aria-labelledby="policy-title">
+        <header class="policy-heading">
+          <a class="policy-back" href={base}>← Strona główna</a>
+          <h1 id="policy-title">Polityka prywatności</h1>
+          <p>Serwis idlogic.pl oraz aplikacja idLogic Backup</p>
+          <p class="policy-date">Ostatnia aktualizacja: <time datetime="2026-10-18">18 października 2026 r.</time></p>
+        </header>
+
+        <nav class="policy-contents" aria-label="Spis treści polityki prywatności">
+          <p>Spis treści</p>
+          <ol>{sections.map(([id, label]) => <li><a href={`#${id}`}>{label}</a></li>)}</ol>
+        </nav>
+
+        <section id="informacje-ogolne">
+          <h2>1. Informacje ogólne</h2>
+          <p>Ta polityka wyjaśnia, jakie dane osobowe są przetwarzane w związku z korzystaniem z informacyjnej strony idlogic.pl, kontaktem z idLogic oraz działaniem wewnętrznego narzędzia idLogic Backup. Nazwa idLogic oznacza markę używaną przez administratora wskazanego poniżej, a nie odrębny podmiot prawny.</p>
+          <p>Dane są przetwarzane zgodnie z rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679, zwanym dalej „RODO”. Polityka opisuje informacyjną część witryny oraz dane przekazane administratorowi; odrębne usługi, do których prowadzą linki, mogą przetwarzać również własne dane techniczne.</p>
+        </section>
+
+        <section id="administrator">
+          <h2>2. Administrator danych osobowych</h2>
+          <p>Administratorem danych osobowych jest <strong>Ilya Petrashevich</strong>, działający pod nazwą idLogic.</p>
+          <p>Kontakt w sprawach prywatności i realizacji praw: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+        </section>
+
+        <section id="zakres-danych">
+          <h2>3. Zakres przetwarzanych danych</h2>
+          <p>Zakres danych zależy od sposobu kontaktu i używanej usługi. Może obejmować:</p>
+          <ul>
+            <li>dane podane w korespondencji lub zapytaniu, np. imię i nazwisko, adres e-mail, numer telefonu, informacje o projekcie i treść wiadomości;</li>
+            <li>dane dotyczące przygotowania oferty lub współpracy, w zakresie przekazanym przez osobę kontaktującą się z administratorem;</li>
+            <li>dane techniczne połączenia, np. adres IP, czas żądania, adres odwiedzanej strony i informacje przekazywane przez przeglądarkę, przetwarzane przez infrastrukturę obsługującą witrynę;</li>
+            <li>dane objęte kopiami zapasowymi oraz informacje potrzebne do ich obsługi, opisane w <a href="#idlogic-backup">sekcji 11</a>.</li>
+          </ul>
+          <p>Podanie danych w korespondencji jest dobrowolne. Brak informacji niezbędnych do odpowiedzi lub przygotowania oferty może jednak uniemożliwić obsługę zapytania. Prosimy nie przesyłać danych wrażliwych ani informacji, które nie są potrzebne do załatwienia sprawy.</p>
+        </section>
+
+        <section id="cele-podstawy">
+          <h2>4. Cele i podstawy prawne przetwarzania danych</h2>
+          <ul>
+            <li><strong>Odpowiedź na zapytanie i przygotowanie współpracy:</strong> art. 6 ust. 1 lit. b RODO, gdy działania przed zawarciem umowy są podejmowane na żądanie osoby, której dane dotyczą.</li>
+            <li><strong>Pozostała korespondencja, w tym kontakt z przedstawicielem kontrahenta:</strong> art. 6 ust. 1 lit. f RODO — prawnie uzasadniony interes polegający na komunikacji i obsłudze spraw związanych z idLogic.</li>
+            <li><strong>Realizacja umowy:</strong> art. 6 ust. 1 lit. b RODO, w zakresie danych niezbędnych do wykonania umowy z osobą, której dane dotyczą.</li>
+            <li><strong>Utrzymanie działania i bezpieczeństwa systemów, diagnostyka oraz kopie zapasowe:</strong> art. 6 ust. 1 lit. f RODO — prawnie uzasadniony interes polegający na ochronie danych, ciągłości działania i możliwości odtworzenia systemów.</li>
+            <li><strong>Ustalenie, dochodzenie lub obrona roszczeń:</strong> art. 6 ust. 1 lit. f RODO — prawnie uzasadniony interes polegający na ochronie praw administratora.</li>
+            <li><strong>Wykonanie obowiązków wynikających z przepisów:</strong> art. 6 ust. 1 lit. c RODO, wyłącznie wtedy, gdy konkretny obowiązek ma zastosowanie do danej sprawy.</li>
+          </ul>
+          <p>Jeżeli określone przetwarzanie opiera się na zgodzie, jego cel i zakres są wskazywane przy jej pozyskiwaniu. Sama informacyjna część strony idlogic.pl nie podejmuje wobec odwiedzających zautomatyzowanych decyzji wywołujących skutki prawne ani nie stosuje profilowania reklamowego.</p>
+        </section>
+
+        <section id="formularze">
+          <h2>5. Formularze kontaktowe i komunikacja</h2>
+          <p>Informacyjna strona idlogic.pl nie zawiera własnego formularza przesyłającego dane. Kontakt e-mail otwiera program pocztowy użytkownika. Wiadomość jest wysyłana dopiero przez użytkownika.</p>
+          <p>Przyciski dotyczące wyceny prowadzą do odrębnego konfiguratora pod adresem <a href={QUESTIONNAIRE_URL}>configurator.idlogic.pl</a>. Samo kliknięcie linku na stronie nie przesyła odpowiedzi formularza. Dane wpisane i przekazane w konfiguratorze mogą być wykorzystane do obsługi zapytania, oceny zakresu projektu i dalszego kontaktu.</p>
+          <p>Strona zawiera także link do demonstracji pod adresem demo.idlogic.pl. Konfigurator i demonstracja są odrębnymi usługami; opis cookies informacyjnej części witryny w sekcji 6 nie obejmuje mechanizmów logowania i przechowywania ustawień tych usług.</p>
+        </section>
+
+        <section id="cookies">
+          <h2>6. Pliki cookies i narzędzia analityczne</h2>
+          <p>Informacyjna część strony idlogic.pl nie korzysta z Google Analytics, pikseli reklamowych ani innych osadzonych narzędzi analitycznych lub marketingowych. Jej kod nie zapisuje własnych plików cookies ani danych w pamięci localStorage lub sessionStorage przeglądarki.</p>
+          <p>Obrazy i zasoby strony są dostarczane wraz z witryną. Dostawca hostingu może przetwarzać techniczne dane żądań niezbędne do dostarczenia i zabezpieczenia usługi. Nie jest to równoznaczne z prowadzeniem analityki marketingowej przez idLogic.</p>
+          <p>Po przejściu do odrębnej usługi jej mechanizmy techniczne mogą działać niezależnie od tej strony. Użytkownik może zarządzać cookies i danymi witryn w ustawieniach swojej przeglądarki. Wprowadzenie nowych narzędzi wymagających zgody powinno zostać poprzedzone odpowiednią informacją i uzyskaniem zgody.</p>
+        </section>
+
+        <section id="odbiorcy">
+          <h2>7. Odbiorcy danych</h2>
+          <p>Dostęp do danych może być potrzebny upoważnionym osobom obsługującym sprawę oraz dostawcom usług technicznych, w zakresie niezbędnym do realizacji opisanych celów. Dotyczy to w szczególności:</p>
+          <ul>
+            <li>GitHub, dostawcy hostingu GitHub Pages dla informacyjnej witryny;</li>
+            <li>dostawców poczty elektronicznej oraz usług utrzymania systemów i obsługi zapytań;</li>
+            <li>Google, dostawcy Google Drive wykorzystywanego przez idLogic Backup;</li>
+            <li>organów lub innych podmiotów uprawnionych do otrzymania danych na podstawie przepisów prawa.</li>
+          </ul>
+          <p>Dane nie są sprzedawane. Powierzenie przetwarzania danych na rzecz administratora wymaga odpowiedniej podstawy i zabezpieczeń. Dostawcy mogą również przetwarzać niektóre dane jako odrębni administratorzy, np. dla zapewnienia bezpieczeństwa swoich usług.</p>
+          <p>Korzystanie z usług globalnych dostawców, w tym GitHub i Google, może wiązać się z przetwarzaniem danych poza Europejskim Obszarem Gospodarczym, m.in. w Stanach Zjednoczonych. Takie przekazanie wymaga podstawy przewidzianej w rozdziale V RODO, np. właściwej decyzji o odpowiednim stopniu ochrony albo standardowych klauzul umownych wraz z wymaganymi zabezpieczeniami. Informacje o podstawie konkretnego przekazania i kopii stosowanych zabezpieczeń można uzyskać, kontaktując się z administratorem.</p>
+          <p>Informacje dostawców: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">polityka prywatności GitHub</a> oraz <a href="https://policies.google.com/privacy?hl=pl">polityka prywatności Google</a>.</p>
+        </section>
+
+        <section id="przechowywanie">
+          <h2>8. Okres przechowywania danych</h2>
+          <p>Dane są przechowywane nie dłużej, niż jest to potrzebne do celu ich przetwarzania. Okres ustala się według następujących kryteriów:</p>
+          <ul>
+            <li>korespondencja dotycząca bieżącego zapytania — do zakończenia sprawy, a następnie tylko w zakresie potrzebnym do udokumentowania ustaleń lub ochrony roszczeń, do upływu właściwego okresu ich przedawnienia;</li>
+            <li>dane związane z umową — przez czas jej realizacji, a następnie przez okres wymagany przez mające zastosowanie przepisy lub niezbędny do dochodzenia albo obrony roszczeń;</li>
+            <li>dane techniczne i diagnostyczne — przez czas niezbędny do obsługi żądania, analizy awarii lub zdarzenia bezpieczeństwa; okresy danych obsługiwanych samodzielnie przez dostawców określają także ich zasady;</li>
+            <li>kopie zapasowe — do zastąpienia ich nowszymi kopiami w ramach rotacji albo do ustania potrzeby ich zachowania na potrzeby odtworzenia systemu, z uwzględnieniem obowiązków prawnych;</li>
+            <li>dane przetwarzane na podstawie zgody — do jej wycofania lub ustania celu, chyba że istnieje odrębna podstawa dalszego przetwarzania.</li>
+          </ul>
+          <p>Usunięcie danych z systemu roboczego nie zawsze oznacza ich natychmiastowe usunięcie z istniejących kopii. Dane pozostające w kopiach nie są przeznaczone do bieżącego wykorzystania i podlegają usunięciu w ramach rotacji. Przy odtworzeniu systemu należy uwzględnić wcześniej zrealizowane żądania usunięcia danych.</p>
+        </section>
+
+        <section id="prawa">
+          <h2>9. Prawa osób, których dane dotyczą</h2>
+          <p>Na zasadach i w granicach określonych w RODO przysługują Ci prawa:</p>
+          <ul>
+            <li>dostępu do danych i otrzymania ich kopii;</li>
+            <li>sprostowania nieprawidłowych danych i uzupełnienia danych niekompletnych;</li>
+            <li>usunięcia danych lub ograniczenia ich przetwarzania;</li>
+            <li>przenoszenia danych, gdy przetwarzanie odbywa się w sposób zautomatyzowany na podstawie zgody lub umowy;</li>
+            <li>wniesienia sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie, z przyczyn związanych z Twoją szczególną sytuacją;</li>
+            <li>wycofania zgody w dowolnym momencie, jeżeli była podstawą przetwarzania, bez wpływu na zgodność z prawem wcześniejszych działań.</li>
+          </ul>
+          <p>Wnioski można kierować na <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Jeśli pojawią się uzasadnione wątpliwości co do tożsamości osoby składającej wniosek, administrator może poprosić o niezbędne dodatkowe informacje. Odpowiedź jest udzielana bez zbędnej zwłoki, co do zasady w ciągu miesiąca; w przypadkach przewidzianych przez RODO termin może zostać przedłużony z podaniem przyczyny.</p>
+          <p>Masz również prawo złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych: <a href="https://uodo.gov.pl/">uodo.gov.pl</a>.</p>
+        </section>
+
+        <section id="bezpieczenstwo">
+          <h2>10. Bezpieczeństwo danych</h2>
+          <p>Witryna jest dostępna przez HTTPS. Ochrona danych obejmuje ograniczanie dostępu do upoważnionych osób, ochronę informacji uwierzytelniających oraz utrzymywanie kopii zapasowych. Zakres środków technicznych i organizacyjnych powinien odpowiadać rodzajowi danych i ryzyku ich przetwarzania.</p>
+          <p>Klucze, hasła, tokeny dostępu i szczegóły dostępu do infrastruktury nie są treścią tej polityki ani publicznej strony. Zgłoszenia dotyczące bezpieczeństwa można przesyłać na <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>, bez dołączania haseł lub tokenów.</p>
+        </section>
+
+        <section id="idlogic-backup">
+          <h2>11. Aplikacja idLogic Backup i integracja z Google Drive</h2>
+          <p><strong>idLogic Backup</strong> jest wewnętrznym narzędziem technicznym idLogic, używanym do tworzenia i przechowywania zaszyfrowanych kopii zapasowych systemów informatycznych administratora. Narzędzie korzysta z Google Drive API za pośrednictwem oprogramowania rclone. Nie jest funkcją logowania dla odwiedzających idlogic.pl.</p>
+          <h3>Cel i zakres obsługi kopii</h3>
+          <p>Integracja służy do:</p>
+          <ul>
+            <li>przesyłania kopii zapasowych na konto Google Drive autoryzowane przez administratora;</li>
+            <li>odczytywania informacji o plikach i folderach potrzebnych do obsługi kopii;</li>
+            <li>weryfikowania przesłanych plików oraz pobierania kopii na potrzeby odtworzenia systemu;</li>
+            <li>usuwania starszych kopii zgodnie z rotacją i potrzebami odtwarzania danych.</li>
+          </ul>
+          <p>Kopie mogą obejmować dane techniczne, konfigurację aplikacji oraz dane zapisane w systemach CRM, w tym dane osobowe klientów. Obsługa Google Drive może wymagać dostępu do zawartości plików kopii i ich metadanych, takich jak identyfikatory, nazwy, rozmiary i daty modyfikacji. Dane te służą wyłącznie tworzeniu, przechowywaniu, weryfikacji, rotacji i odtwarzaniu kopii.</p>
+          <h3>Autoryzacja i przechowywanie</h3>
+          <p>Dostęp do konta Google Drive jest udzielany przez OAuth 2.0. Techniczny zakres dostępu wynika z uprawnień prezentowanych przez Google podczas autoryzacji i udzielonych aplikacji. Wydzielenie miejsca na kopie nie jest samo w sobie ograniczeniem uprawnień OAuth do tego miejsca.</p>
+          <p>Kopie są przeznaczone do przechowywania w postaci zaszyfrowanej. Informacje autoryzacyjne umożliwiają działanie zadania backupu po stronie infrastruktury administratora i nie są udostępniane na publicznej witrynie. Okres przechowywania kopii opisano w sekcji 8.</p>
+          <h3>Wykorzystanie i udostępnianie danych Google</h3>
+          <p>Dane uzyskane przez Google Drive API nie są sprzedawane ani wykorzystywane do reklamy, profilowania marketingowego lub trenowania ogólnych modeli sztucznej inteligencji. Dostęp osób do danych jest ograniczony do upoważnionej obsługi kopii i odtwarzania na polecenie uprawnionego administratora, zapewnienia bezpieczeństwa albo wykonania obowiązku prawnego.</p>
+          <p>Udostępnienie danych może nastąpić tylko w zakresie niezbędnym do opisanej obsługi backupu, zapewnienia bezpieczeństwa lub wykonania obowiązku prawnego, z uwzględnieniem wymaganej autoryzacji. Wykorzystanie i przekazywanie informacji otrzymanych z API Google podlega <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, w tym wymaganiom Limited Use, gdy mają zastosowanie.</p>
+          <h3>Cofnięcie dostępu i usunięcie danych</h3>
+          <p>Właściciel autoryzowanego konta może cofnąć dostęp aplikacji w <a href="https://myaccount.google.com/connections">ustawieniach połączeń konta Google</a>. Uniemożliwi to dalszą pracę integracji z tym kontem do czasu ponownej autoryzacji. Samo cofnięcie dostępu nie usuwa plików już zapisanych na Google Drive ani danych w systemach źródłowych.</p>
+          <p>W sprawie usunięcia danych, zakończenia integracji lub realizacji praw dotyczących danych w kopiach należy skontaktować się z administratorem: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Żądania są rozpatrywane z uwzględnieniem podstaw przetwarzania i obowiązków prawnych. Autoryzacja konta Google przez administratora nie zastępuje podstawy prawnej przetwarzania danych klientów znajdujących się w kopiach.</p>
+          <p>Google Drive jest usługą Google, świadczoną na warunkach i zasadach prywatności tego dostawcy.</p>
+        </section>
+
+        <section id="kontakt">
+          <h2>12. Kontakt w sprawach prywatności</h2>
+          <p>W sprawach dotyczących tej polityki, przetwarzania danych oraz aplikacji idLogic Backup można napisać do Ilya Petrashevich na <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Aby ułatwić obsługę, w temacie wiadomości można wskazać „Prywatność” lub „idLogic Backup”.</p>
+        </section>
+
+        <section id="zmiany">
+          <h2>13. Zmiany polityki prywatności</h2>
+          <p>Polityka może być aktualizowana w związku ze zmianami usług, sposobów przetwarzania danych lub przepisów. Aktualna wersja jest publikowana pod tym samym adresem z datą aktualizacji. Zmiana celu lub sposobu wykorzystania danych Google wymaga odpowiedniej informacji oraz ponownej zgody lub autoryzacji, jeżeli wymagają tego przepisy albo zasady Google.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="shell footer-grid">
+      <div><a class="brand brand-footer" href={base}><img class="brand-icon" src={`${base}logo-white.png`} width="43" height="27" alt="" loading="lazy" /><span>{BRAND_NAME}</span></a><p>{t.footer.tagline}</p></div>
+      <div class="footer-meta"><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a><span>{t.footer.location}</span></div>
+      <div class="footer-bottom"><span>© {new Date().getFullYear()} {BRAND_NAME}. {t.footer.rights}</span><a href={base}>Strona główna ↗</a></div>
+    </div>
+    <LegalFooter showBackup />
+  </footer>
+</BaseLayout>
+
+<style>
+  .policy-page { background: var(--paper); color: var(--ink); padding: 66px 0 110px; }
+  .policy-article { max-width: 880px; margin-inline: auto; font-size: 17px; line-height: 1.7; overflow-wrap: anywhere; }
+  .policy-heading { margin-bottom: 40px; }
+  .policy-heading h1 { margin: 35px 0 20px; color: var(--ink); font-size: clamp(38px, 6vw, 72px); font-weight: 570; line-height: 1.06; letter-spacing: -.055em; }
+  .policy-heading > p { margin: 0 0 10px; color: var(--muted); }
+  .policy-heading .policy-date { font-size: 13px; }
+  .policy-back { font-size: 13px; font-weight: 650; }
+  .policy-article a { text-decoration: underline; text-underline-offset: 3px; }
+  .policy-article a:focus-visible { outline: 2px solid #2f4650; outline-offset: 4px; }
+  .policy-contents { padding: 25px 0; border-block: 1px solid var(--line); }
+  .policy-contents > p { margin: 0 0 12px; font-size: 14px; font-weight: 700; }
+  .policy-contents ol { margin: 0; padding-left: 24px; font-size: 14px; line-height: 1.65; }
+  .policy-contents li + li { margin-top: 5px; }
+  .policy-article section { margin-top: 42px; scroll-margin-top: 24px; }
+  .policy-article h2 { margin: 0 0 20px; color: var(--ink); font-size: clamp(25px, 3vw, 32px); font-weight: 600; line-height: 1.22; letter-spacing: -.035em; }
+  .policy-article h3 { margin: 27px 0 12px; color: var(--ink); font-size: 20px; line-height: 1.35; font-weight: 650; letter-spacing: -.02em; }
+  .policy-article section p { margin-bottom: 17px; }
+  .policy-article section ul { margin: 0 0 20px; padding-left: 24px; }
+  .policy-article section li + li { margin-top: 10px; }
+  @media (max-width: 700px) { .policy-page { padding: 36px 0 70px; }.policy-article { font-size: 16px; }.policy-heading { margin-bottom: 28px; }.policy-article section { margin-top: 34px; } }
+</style>

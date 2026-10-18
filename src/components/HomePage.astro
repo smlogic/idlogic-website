@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import FeatureCard from './FeatureCard.astro';
+import LegalFooter from './LegalFooter.astro';
 import { BRAND_NAME, CONTACT_EMAIL, DEMO_URL, QUESTIONNAIRE_URL } from '../config';
 import { copy, type Lang } from '../i18n';
 
@@ -188,6 +189,7 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
     </div>
+    <LegalFooter showBackup lang={lang} />
   </footer>
 </BaseLayout>
 

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
+import LegalFooter from './LegalFooter.astro';
 import { BRAND_NAME, QUESTIONNAIRE_URL } from '../config';
 import { copy, type Lang } from '../i18n';
 import { integrationsCopy } from '../integrations';
@@ -106,7 +107,7 @@ const initial = t.scenarios[0];
 
     <section class="integration-final"><div class="shell integration-final-grid"><div><p class="integration-kicker">{t.ctaEyebrow}</p><h2>{t.ctaTitle}</h2></div><div><p>{t.ctaBody}</p><a class="button button-dark" href={QUESTIONNAIRE_URL} target="_blank" rel="noopener noreferrer">{t.cta}<span aria-hidden="true">↗</span></a><a class="integration-smart-link" href={`${base}${lang === 'en' ? 'en/' : ''}smart-home/`}>{t.smartLink} ↗</a></div></div></section>
   </main>
-  <footer class="footer integration-footer"><div class="shell integration-footer-inner"><a class="brand brand-footer" href={home}><img class="brand-icon" src={`${base}logo-white.png`} width="43" height="27" alt="" loading="lazy" /><span>{BRAND_NAME}</span></a><a href={home}>{t.back} ↗</a><div class="language-switch"><a class:list={[{ active: lang === 'pl' }]} href={`${base}integracje/`} lang="pl">PL</a><span>/</span><a class:list={[{ active: lang === 'en' }]} href={`${base}en/integracje/`} lang="en">EN</a></div></div></footer>
+  <footer class="footer integration-footer"><div class="shell integration-footer-inner"><a class="brand brand-footer" href={home}><img class="brand-icon" src={`${base}logo-white.png`} width="43" height="27" alt="" loading="lazy" /><span>{BRAND_NAME}</span></a><a href={home}>{t.back} ↗</a><div class="language-switch"><a class:list={[{ active: lang === 'pl' }]} href={`${base}integracje/`} lang="pl">PL</a><span>/</span><a class:list={[{ active: lang === 'en' }]} href={`${base}en/integracje/`} lang="en">EN</a></div></div><LegalFooter lang={lang} /></footer>
 </BaseLayout>
 
 <script>

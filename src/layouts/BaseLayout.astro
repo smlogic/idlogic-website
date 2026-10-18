@@ -7,9 +7,11 @@ interface Props {
   title: string;
   description: string;
   path?: string;
+  robots?: string;
+  alternateLanguages?: boolean;
 }
 
-const { lang, title, description, path = '' } = Astro.props;
+const { lang, title, description, path = '', robots, alternateLanguages = true } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const localPath = lang === 'pl' ? path : `en/${path}`;
 const canonical = Astro.site ? new URL(`${base}${localPath}`, Astro.site) : undefined;
@@ -22,12 +24,13 @@ const enUrl = Astro.site ? new URL(`${base}en/${path}`, Astro.site) : undefined;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
     <meta name="theme-color" content="#0d1117" />
     <meta name="generator" content={Astro.generator} />
     {canonical && <link rel="canonical" href={canonical} />}
-    {plUrl && <link rel="alternate" hreflang="pl" href={plUrl} />}
-    {enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
-    {plUrl && <link rel="alternate" hreflang="x-default" href={plUrl} />}
+    {alternateLanguages && plUrl && <link rel="alternate" hreflang="pl" href={plUrl} />}
+    {alternateLanguages && enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
+    {alternateLanguages && plUrl && <link rel="alternate" hreflang="x-default" href={plUrl} />}
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
     <link rel="icon" href={`${base}favicon-192.png`} type="image/png" sizes="192x192" />
     <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} sizes="180x180" />
@@ -38,7 +41,7 @@ const enUrl = Astro.site ? new URL(`${base}en/${path}`, Astro.site) : undefined;
     <meta property="og:site_name" content={BRAND_NAME} />
     {canonical && <meta property="og:url" content={canonical} />}
     <meta property="og:locale" content={lang === 'pl' ? 'pl_PL' : 'en_US'} />
-    <meta property="og:locale:alternate" content={lang === 'pl' ? 'en_US' : 'pl_PL'} />
+    {alternateLanguages && <meta property="og:locale:alternate" content={lang === 'pl' ? 'en_US' : 'pl_PL'} />}
     <meta name="twitter:card" content="summary" />
   </head>
   <body>

@@ -1,0 +1,18 @@
+---
+interface Props { showBackup?: boolean; lang?: 'pl' | 'en' }
+const { showBackup = false, lang = 'pl' } = Astro.props;
+const policy = `${import.meta.env.BASE_URL}polityka-prywatnosci/`;
+---
+<div class="shell legal-footer">
+  {showBackup && <p><strong>idLogic Backup</strong>{lang === 'pl'
+    ? ' – wewnętrzne narzędzie idLogic służące do tworzenia i przechowywania zaszyfrowanych kopii zapasowych systemów informatycznych.'
+    : ' – an internal idLogic tool for creating and storing encrypted backups of IT systems.'}</p>}
+  <a href={policy} lang="pl">Polityka prywatności</a>
+</div>
+<style>
+  .legal-footer { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px 32px; margin-top: 25px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.16); font-size: 12px; line-height: 1.6; }
+  .legal-footer p { flex: 1 1 480px; max-width: 90ch; margin: 0; color: #aeb7bf; }
+  .legal-footer strong { font-weight: 600; color: #c9d0d6; }
+  .legal-footer a { color: #f8f7f3; text-decoration: underline; text-underline-offset: 4px; }
+  .legal-footer a:focus-visible { outline: 2px solid #9ad4ff; outline-offset: 5px; }
+</style>

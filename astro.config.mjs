@@ -13,5 +13,5 @@ export default defineConfig({
   base,
   output: 'static',
   trailingSlash: 'always',
-  integrations: [sitemap()]
+  integrations: [sitemap({ filter: (page) => !new URL(page).pathname.endsWith('/polityka-prywatnosci/') })]
 });
