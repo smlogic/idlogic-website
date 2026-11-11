@@ -25,7 +25,7 @@ export const copy = {
       first: 'Twój',
       words: ['smart', 'prywatny', 'bezpieczny', ''],
       accessibleTitle: 'Twój dom: smart, prywatny, bezpieczny i taki, jak chcesz.',
-      noun: 'dom.',
+      noun: 'dom',
       body: 'Projektujemy inteligentne przestrzenie, które upraszczają codzienność — bez zamykania Cię w jednym ekosystemie.',
       primary: 'Przejdź do formularza',
       secondary: 'Poznaj nasze podejście',
@@ -43,7 +43,7 @@ export const copy = {
     },
     intro: {
       kicker: 'Technologia w tle',
-      title: 'Mniej aplikacji. Więcej działania.',
+      title: 'Mniej aplikacji. Więcej działania',
       body: 'Łączymy oświetlenie, klimat, rolety, bezpieczeństwo, energię i multimedia w jeden spójny system. Automatyzacje reagują na rytm dnia, obecność i potrzeby użytkowników — zamiast wymagać ciągłego klikania.'
     },
     cards: [
@@ -62,13 +62,13 @@ export const copy = {
     ],
     principle: {
       kicker: 'Prywatność jako standard',
-      title: 'Twoja przestrzeń nie musi wysyłać wszystkiego do chmury.',
+      title: 'Twoja przestrzeń nie musi wysyłać wszystkiego do chmury',
       body: 'Tam, gdzie to uzasadnione, stawiamy na lokalne sterowanie i architekturę ograniczającą zależność od zewnętrznych usług. Dzięki temu kluczowe funkcje domu lub biura mogą działać szybko i przewidywalnie także wtedy, gdy internet nie jest dostępny.',
       bullets: ['lokalne sceny i automatyzacje', 'kontrola nad integracjami', 'możliwość dalszej rozbudowy', 'czytelna dokumentacja systemu']
     },
     process: {
       kicker: 'Od pomysłu do działającego systemu',
-      title: 'Prosty proces, bez zgadywania.',
+      title: 'Prosty proces, bez zgadywania',
       steps: [
         ['Krótki formularz', 'Opisujesz przestrzeń, potrzeby i zakres. Na tej podstawie zaczynamy wycenę.'],
         ['Koncepcja', 'Porządkujemy funkcje, integracje i priorytety. Ustalamy, co naprawdę ma sens.'],
@@ -78,13 +78,13 @@ export const copy = {
     },
     local: {
       kicker: 'Warszawa i okolice',
-      title: 'Projektujemy dla realnych mieszkań, domów i biur.',
+      title: 'Projektujemy dla realnych mieszkań, domów i biur',
       body: 'Nowe inwestycje, modernizacje i rozbudowa istniejących instalacji. Zaczynamy od potrzeb użytkownika, a dopiero potem dobieramy technologię.',
       cta: 'Opowiedz nam o projekcie'
     },
     finalCta: {
       overline: 'Masz projekt?',
-      title: 'Zacznij od kilku pytań.',
+      title: 'Zacznij od kilku pytań',
       body: 'Przejdź do formularza. Na jego podstawie dalszy proces może automatycznie obliczyć wstępny koszt i przygotować ofertę.',
       button: 'Otwórz formularz'
     },
